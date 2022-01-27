@@ -10,11 +10,12 @@ private:
     string nazwa;
     int odleglosc;
 public:
+    Miejsce();
     void set_miejsce(string, int);
     string get_nazwa(void);
     int get_odleglosc(void);
 };
 
-void miejsce_init(void);
+void add_miejsce();
 
 #endif

@@ -3,6 +3,10 @@
 
 using namespace std;
 
+Miejsce::Miejsce() {
+    
+}
+
 void Miejsce::set_miejsce(string n, int odl) {
     this->nazwa = n;
     this->odleglosc = odl;
