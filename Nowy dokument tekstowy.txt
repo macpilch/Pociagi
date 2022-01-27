@@ -1,0 +1,5 @@
+1. Ró¿ne miasta, miejsca docelowe, odleg³oœci, tablica miast.
+2. Poci¹gi, dodawanie poci¹gów, prêdkoœci poruszania.
+3. Tory poruszania, dostêpnoœæ torów, zajêtoœæ ma pocz¹tek i koniec(koniec niech siê oblicza na podstawie odleg³oœci i prêdkoœci poci¹gu), pola obiektu tor np. 24 elementy.
+4. Interfejs - wprowadŸ kurs, poci¹g, godzina startu.
+5. Pomiar biê¿¹cego czasu.
