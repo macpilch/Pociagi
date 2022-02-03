@@ -60,7 +60,7 @@ void pokaz_menu(void) {
 void pokaz_elementy_miejsc(void) {
     int wybor = 0;
 
-    cout << "1. Pokaz miejsca do wybrania.\n2. Dodaj nowe miejsce.\n3. Usun miejsce.\n";
+    cout << "1. Pokaz miejsca do wybrania.\n2. Dodaj nowe miejsce.\n3. Usun miejsce.\n4. Zapis miejsc do pliku.\n5. Wczytaj miejsca z pliku.\n";
     cin >> wybor;
 
     switch(wybor) {
@@ -72,6 +72,12 @@ void pokaz_elementy_miejsc(void) {
         break;
     case 3:
         usun_miejsce();
+        break;
+    case 4:
+        zapisz_miejsce();
+        break;
+    case 5:
+        wczytaj_miejsce();
         break;
     }
 }
@@ -114,8 +120,46 @@ void pokaz_elementy_torow(void) {
     }    
 }
 
+void zapisz_miejsce(void) {
+    fstream plik_baza_miejsc;
+
+    plik_baza_miejsc.open("miejsca", fstream::binary | fstream::out | fstream::in);
+
+    if(plik_baza_miejsc.is_open()) {
+        cout << "Plik otwarto!";
+
+        for(unsigned int i = 0; i < myMiejsca.size(); i++) {
+            plik_baza_miejsc.write(reinterpret_cast<char*> (& myMiejsca[i]), sizeof(myMiejsca));
+        }
+    } else {
+        cout << "Brak pliku z baza danych miejsc!";
+    }
+
+    plik_baza_miejsc.close();
+    pokaz_elementy_miejsc();
+}
+
+void wczytaj_miejsce(void) {
+    fstream plik_baza_miejsc;
+    Miejsce temp;
+
+    plik_baza_miejsc.open("miejsca", fstream::binary | fstream::out | fstream::in);
+
+    if(plik_baza_miejsc.is_open()) {
+        cout << "Plik otwarto!";
+
+        plik_baza_miejsc.read(reinterpret_cast<char*> (& temp), sizeof(Miejsce));
+        myMiejsca.push_back(temp);
+    } else {
+        cout << "Brak pliku z baza danych miejsc!";
+    }
+
+    plik_baza_miejsc.close();
+    pokaz_elementy_miejsc();
+}
+
 void pokaz_miejsca(void) {
-    for(int i = 0; i < myMiejsca.size(); i++) {
+    for(unsigned int i = 0; i < myMiejsca.size(); i++) {
         cout << "Miejscowosc: " << myMiejsca[i].get_nazwa() << endl;
         cout << "Odleglosc: " << myMiejsca[i].get_odleglosc() << endl;
     }
@@ -151,7 +195,7 @@ void usun_miejsce(void) {
 }
 
 void pokaz_pociagi(void) {
-    for(int i = 0; i < myPociagi.size(); i++) {
+    for(unsigned int i = 0; i < myPociagi.size(); i++) {
         cout << "Nazwa: " << myPociagi[i].get_nazwa() << endl;
         cout << "Predkosc: " << myPociagi[i].get_predkosc() << endl;
         cout << "Dostepnosc: " << myPociagi[i].get_dostepnosc() << endl;
@@ -189,7 +233,7 @@ void usun_pociag(void) {
 }
 
 void pokaz_tory(void) {
-    for(int i = 0; i < myTory.size(); i++) {
+    for(unsigned int i = 0; i < myTory.size(); i++) {
         cout << "Poczatek: " << myTory[i].get_poczatek() << endl;
         cout << "Koniec: " << myTory[i].get_koniec() << endl;
     }
