@@ -8,6 +8,7 @@ private:
     bool dostepnosc;
 public:
     void set_poczatek(int);
+    void set_dostepnosc(bool);
     int get_poczatek(void);
     int get_koniec(void);
     bool get_dostepnosc(void);

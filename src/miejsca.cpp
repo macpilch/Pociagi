@@ -4,7 +4,7 @@
 using namespace std;
 
 Miejsce::Miejsce() {
-    
+    cout << "Poprawnie stworzono konstruktor (Miejsca)!\n";
 }
 
 void Miejsce::set_miejsce(string n, int odl) {

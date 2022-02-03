@@ -16,6 +16,4 @@ public:
     int get_odleglosc(void);
 };
 
-void add_miejsce();
-
 #endif
