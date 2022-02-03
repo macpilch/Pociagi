@@ -208,7 +208,7 @@ void dodaj_tor(void) {
 void usun_tor(void) {
     int id = 0;
 
-    cout << "Podaj ID miejsca, ktore chcesz usunac: \n";
+    cout << "Podaj ID toru, ktore chcesz usunac: \n";
     cin >> id;
 
     myTory.erase(myTory.begin() + id);
