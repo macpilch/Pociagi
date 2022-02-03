@@ -1,6 +1,8 @@
+#include <string.h>
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <fstream>
 #include "../inc/miejsca.h"
 #include "../inc/pociagi.h"
 #include "../inc/tory.h"
@@ -24,6 +26,8 @@ void usun_pociag(void);
 void pokaz_tory(void);
 void dodaj_tor(void);
 void usun_tor(void);
+void zapisz_miejsce(void);
+void wczytaj_miejsce(void);
 
 int main() {
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl << endl;
@@ -122,7 +126,7 @@ void pokaz_miejsca(void) {
 void dodaj_miejsce(void) {
     string nazwa;
     int odlg;
-    static int ilosc;
+    int ilosc = 0;
     
     cout << "Podaj nazwe miejscowosci ktora chcesz dodac: \n";
     cin >> nazwa;
@@ -131,7 +135,8 @@ void dodaj_miejsce(void) {
     cin >> odlg;
 
     myMiejsca.push_back(Miejsce());
-    myMiejsca[ilosc++].set_miejsce(nazwa, odlg);
+    ilosc = myMiejsca.size();
+    myMiejsca[ilosc - 1].set_miejsce(nazwa, odlg);
     pokaz_elementy_miejsc();
 }
 
