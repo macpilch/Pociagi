@@ -3,6 +3,7 @@
 #include <vector>
 #include <windows.h>
 #include <fstream>
+
 #include "../inc/miejsca.h"
 #include "../inc/pociagi.h"
 #include "../inc/tory.h"
@@ -29,7 +30,7 @@ void usun_tor(void);
 void zapisz_miejsce(void);
 void wczytaj_miejsce(void);
 
-int main() {
+int main(void) {
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl << endl;
     pokaz_menu();
     return 0;
@@ -122,14 +123,16 @@ void pokaz_elementy_torow(void) {
 
 void zapisz_miejsce(void) {
     fstream plik_baza_miejsc;
+    int wielkosc = myMiejsca.size();
 
     plik_baza_miejsc.open("miejsca", fstream::binary | fstream::out | fstream::in);
 
     if(plik_baza_miejsc.is_open()) {
         cout << "Plik otwarto!";
+        plik_baza_miejsc.write(reinterpret_cast <char *> (& wielkosc), sizeof(int));
 
-        for(unsigned int i = 0; i < myMiejsca.size(); i++) {
-            plik_baza_miejsc.write(reinterpret_cast<char*> (& myMiejsca[i]), sizeof(myMiejsca));
+        for(int i = 0; i < wielkosc; i++) {
+            plik_baza_miejsc.write(reinterpret_cast <char *> (& myMiejsca[i]), sizeof(myMiejsca));
         }
     } else {
         cout << "Brak pliku z baza danych miejsc!";
@@ -141,15 +144,19 @@ void zapisz_miejsce(void) {
 
 void wczytaj_miejsce(void) {
     fstream plik_baza_miejsc;
-    Miejsce temp;
+    int wielkosc = 0;
 
     plik_baza_miejsc.open("miejsca", fstream::binary | fstream::out | fstream::in);
 
     if(plik_baza_miejsc.is_open()) {
         cout << "Plik otwarto!";
 
-        plik_baza_miejsc.read(reinterpret_cast<char*> (& temp), sizeof(Miejsce));
-        myMiejsca.push_back(temp);
+        plik_baza_miejsc.read(reinterpret_cast <char *> (& wielkosc), sizeof(int));
+
+        for(int i = 0; i < wielkosc; i++) {
+            myMiejsca.push_back(Miejsce());
+            plik_baza_miejsc.read(reinterpret_cast <char *> (& myMiejsca[i]), sizeof(Miejsce));
+        }
     } else {
         cout << "Brak pliku z baza danych miejsc!";
     }
@@ -169,18 +176,26 @@ void pokaz_miejsca(void) {
 
 void dodaj_miejsce(void) {
     string nazwa;
-    int odlg;
+    int odlg = 0;
     int ilosc = 0;
     
     cout << "Podaj nazwe miejscowosci ktora chcesz dodac: \n";
     cin >> nazwa;
+
+    for(unsigned int i = 0; i < myMiejsca.size(); i++) {
+        if(nazwa == myMiejsca[i].get_nazwa()) {
+            cout << "Taka nazwa juz istnieje!";
+            break;
+        }
+    }
 
     cout << "Podaj odleglosc od tej miejscowosci: \n";
     cin >> odlg;
 
     myMiejsca.push_back(Miejsce());
     ilosc = myMiejsca.size();
-    myMiejsca[ilosc - 1].set_miejsce(nazwa, odlg);
+    myMiejsca[ilosc - 1].set_miejsce(nazwa, odlg, true);
+    
     pokaz_elementy_miejsc();
 }
 
@@ -190,7 +205,12 @@ void usun_miejsce(void) {
     cout << "Podaj ID miejsca, ktore chcesz usunac: \n";
     cin >> id;
 
-    myMiejsca.erase(myMiejsca.begin() + id);
+    if(!myMiejsca[id].get_stworzone()) {
+        cout << "Takie miejsce nie istnieje!" << endl;
+    } else {
+        myMiejsca.erase(myMiejsca.begin() + id);
+    }
+    
     pokaz_elementy_miejsc();
 }
 
@@ -206,8 +226,8 @@ void pokaz_pociagi(void) {
 
 void dodaj_pociag(void) {
     string nazwa;
-    int predkosc;
-    static int ilosc;
+    int predkosc = 0;
+    int ilosc = 0;
     
     cout << "Podaj nazwe pociagu ktora chcesz dodac: \n";
     cin >> nazwa;
@@ -216,9 +236,10 @@ void dodaj_pociag(void) {
     cin >> predkosc;
 
     myPociagi.push_back(Pociag());
-    myPociagi[ilosc++].set_pociag_nazwa(nazwa);
-    myPociagi[ilosc++].set_pociag_pred(predkosc);
-    myPociagi[ilosc++].set_pociag_dost(true);
+    ilosc = myPociagi.size();
+    myPociagi[ilosc - 1].set_pociag_nazwa(nazwa);
+    myPociagi[ilosc - 1].set_pociag_pred(predkosc);
+    myPociagi[ilosc - 1].set_pociag_dost(true);
     pokaz_elementy_pociagow();
 }
 
@@ -242,15 +263,16 @@ void pokaz_tory(void) {
 }
 
 void dodaj_tor(void) {
-    int poczatek;
-    static int ilosc;
+    int poczatek = 0;
+    int ilosc = 0;
     
     cout << "Podaj poczatek toru ktory chcesz dodac: \n";
     cin >> poczatek;
 
     myTory.push_back(Tor());
-    myTory[ilosc++].set_poczatek(poczatek);
-    myTory[ilosc++].set_dostepnosc(true);
+    ilosc = myTory.size();
+    myTory[ilosc].set_poczatek(poczatek);
+    myTory[ilosc].set_dostepnosc(true);
     pokaz_elementy_torow();
 }
 
