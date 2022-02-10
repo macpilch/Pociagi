@@ -147,18 +147,26 @@ void zapisz_miejsce(void) {
 
 void wczytaj_miejsce(void) {
     fstream plik_baza_miejsc;
+    string tmpNazwa;
+    int tmpOdlg;
+    bool tmpStw;
     int wielkosc = 0;
 
-    plik_baza_miejsc.open("miejsca", fstream::binary | fstream::out | fstream::in);
+    plik_baza_miejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in);
 
     if(plik_baza_miejsc.is_open()) {
         cout << "Plik otwarto!";
 
-        plik_baza_miejsc.read(reinterpret_cast <char *> (& wielkosc), sizeof(int));
+        plik_baza_miejsc >> wielkosc;
+        myMiejsca.clear();
 
         for(int i = 0; i < wielkosc; i++) {
+            plik_baza_miejsc >> tmpNazwa;
+            plik_baza_miejsc >> tmpOdlg;
+            plik_baza_miejsc >> tmpStw;
+
             myMiejsca.push_back(Miejsce());
-            plik_baza_miejsc.read(reinterpret_cast <char *> (& myMiejsca[i]), sizeof(Miejsce));
+            myMiejsca[i].set_miejsce(tmpNazwa, tmpOdlg, tmpStw);
         }
     } else {
         cout << "Brak pliku z baza danych miejsc!";
