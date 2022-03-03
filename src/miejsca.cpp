@@ -7,10 +7,9 @@ Miejsce::Miejsce() {
     cout << "Poprawnie stworzono konstruktor (Miejsca)!\n";
 }
 
-void Miejsce::set_miejsce(string n, int odl, bool s) {
+void Miejsce::set_miejsce(string n, int odl) {
     this->nazwa = n;
     this->odleglosc = odl;
-    this->stworzone = s;
 }
 
 string Miejsce::get_nazwa(void) {
@@ -19,8 +18,4 @@ string Miejsce::get_nazwa(void) {
 
 int Miejsce::get_odleglosc(void) {
     return this->odleglosc;
-}
-
-bool Miejsce::get_stworzone(void) {
-    return this->stworzone;
 }

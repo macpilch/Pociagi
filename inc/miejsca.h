@@ -9,13 +9,11 @@ class Miejsce {
 private:
     string nazwa;
     int odleglosc;
-    bool stworzone;
 public:
     Miejsce();
-    void set_miejsce(string, int, bool);
+    void set_miejsce(string, int);
     string get_nazwa(void);
     int get_odleglosc(void);
-    bool get_stworzone(void);
 };
 
 #endif

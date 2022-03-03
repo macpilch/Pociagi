@@ -9,17 +9,12 @@ class Pociag {
 private:
     string nazwa;
     int predkosc;
-    bool dostepnosc;
     int start;
 public:
     void set_pociag_nazwa(string);
     void set_pociag_pred(int);
-    void set_pociag_dost(bool);
     string get_nazwa(void);
-    int get_predkosc(void); 
-    bool get_dostepnosc(void);
+    int get_predkosc(void);
 };
-
-void pociagi_init(void);
 
 #endif
