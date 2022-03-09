@@ -3,18 +3,23 @@
 
 using namespace std;
 
-void Pociag::set_pociag_nazwa(string n) {
-    this->nazwa = n;
+Pociag::Pociag()
+{
+    cout << "Poprawnie stworzono konstruktor (Pociagi)!";
 }
 
-void Pociag::set_pociag_pred(int p) {
+void Pociag::set_pociag(string n, int p)
+{
+    this->nazwa = n;
     this->predkosc = p;
 }
 
-string Pociag::get_nazwa(void) {
+string Pociag::get_nazwa(void)
+{
     return this->nazwa;
 }
 
-int Pociag::get_predkosc(void) {
+int Pociag::get_predkosc(void)
+{
     return this->predkosc;
 }

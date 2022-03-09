@@ -5,14 +5,16 @@
 
 using namespace std;
 
-class Pociag {
+class Pociag
+{
 private:
     string nazwa;
     int predkosc;
     int start;
+
 public:
-    void set_pociag_nazwa(string);
-    void set_pociag_pred(int);
+    Pociag();
+    void set_pociag(string, int);
     string get_nazwa(void);
     int get_predkosc(void);
 };

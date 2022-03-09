@@ -3,19 +3,23 @@
 
 using namespace std;
 
-Miejsce::Miejsce() {
+Miejsce::Miejsce()
+{
     cout << "Poprawnie stworzono konstruktor (Miejsca)!\n";
 }
 
-void Miejsce::set_miejsce(string n, int odl) {
+void Miejsce::set_miejsce(string n, int odl)
+{
     this->nazwa = n;
     this->odleglosc = odl;
 }
 
-string Miejsce::get_nazwa(void) {
+string Miejsce::get_nazwa(void)
+{
     return this->nazwa;
 }
 
-int Miejsce::get_odleglosc(void) {
+int Miejsce::get_odleglosc(void)
+{
     return this->odleglosc;
 }

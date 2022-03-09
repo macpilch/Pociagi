@@ -3,22 +3,29 @@
 
 using namespace std;
 
-void Tor::set_poczatek(int p) {
+Tor::Tor()
+{
+    cout << "Poprawnie stworzono konstruktor (Tory)!\n";
+}
+
+void Tor::set_tor(int n, int p, int k)
+{
+    this->numer = n;
     this->poczatek = p;
+    this->koniec = k;
 }
 
-void Tor::set_dostepnosc(bool b) {
-    this->dostepnosc = b;
+int Tor::get_numer(void)
+{
+    return this->numer;
 }
 
-int Tor::get_poczatek(void) {
-    return poczatek;
+int Tor::get_poczatek(void)
+{
+    return this->poczatek;
 }
 
-int Tor::get_koniec(void) {
-    return koniec;
-}
-
-bool Tor::get_dostepnosc(void) {
-    return dostepnosc;
+int Tor::get_koniec(void)
+{
+    return this->koniec;
 }

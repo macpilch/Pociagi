@@ -5,10 +5,12 @@
 
 using namespace std;
 
-class Miejsce {
+class Miejsce
+{
 private:
     string nazwa;
     int odleglosc;
+
 public:
     Miejsce();
     void set_miejsce(string, int);
