@@ -5,10 +5,16 @@ using namespace std;
 
 int main(void)
 {
-    wczytaj_miejsce();
+    Godzina tmp;
+    tmp.godz = 8;
+    tmp.min = 15;
+    Kurs k1(1, tmp, 100);
+
+    cout << "Numer: " << k1.numer << " Odleglosc: " << k1.odleglosc << " Godzina: " 
+         << k1.czas_wyjazdu.godz << " Czas podrozy: " << k1.czas_podrozy;
+    /*wczytaj_miejsce();
     wczytaj_pociagi();
-    wczytaj_tory();
-    pokaz_menu();
+    pokaz_menu();*/
     return 0;
 }
 
@@ -17,7 +23,7 @@ void pokaz_menu(void)
     int wybor = 0;
 
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl;
-    cout << "MENU (wybierz odpowiednia opcje): \n\n1. MIEJSCA.\n2. POCIAGI.\n3. TORY.\n";
+    cout << "MENU (wybierz odpowiednia opcje): \n\n1. MIEJSCA.\n2. POCIAGI.\n3. KURSY.\n";
     cin >> wybor;
 
     switch (wybor)
@@ -32,7 +38,7 @@ void pokaz_menu(void)
         break;
     case 3:
         system("cls");
-        pokaz_elementy_torow();
+        //pokaz_elementy_kursow();
         break;
     }
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-vector<Tor> myTory;
+/*vector<Tor> myTory;
 
 void pokaz_elementy_torow(void)
 {
@@ -167,4 +167,4 @@ void usun_tor(void)
 
     system("cls");
     pokaz_elementy_torow();
-}
+}*/

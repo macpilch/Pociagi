@@ -9,7 +9,7 @@
 
 #include "../inc/miejsca.h"
 #include "../inc/pociagi.h"
-#include "../inc/tory.h"
+#include "../inc/kursy.h"
 
 void pokaz_menu(void);
 void pokaz_elementy_miejsc(void);
@@ -24,7 +24,7 @@ void wczytaj_pociagi(void);
 void pokaz_pociagi(void);
 void dodaj_pociag(void);
 void usun_pociag(void);
-void pokaz_elementy_torow(void);
+void pokaz_elementy_kursow(void);
 void zapisz_tory(void);
 void wczytaj_tory(void);
 void pokaz_tory(void);
