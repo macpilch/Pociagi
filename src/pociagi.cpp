@@ -5,7 +5,7 @@ using namespace std;
 
 Pociag::Pociag()
 {
-    cout << "Poprawnie stworzono konstruktor (Pociagi)!";
+    cout << "Poprawnie stworzono konstruktor (Pociagi)!" << endl;
 }
 
 void Pociag::set_pociag(string n, int p)
