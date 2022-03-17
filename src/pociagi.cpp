@@ -8,7 +8,7 @@ Pociag::Pociag()
     cout << "Poprawnie stworzono konstruktor (Pociagi)!" << endl;
 }
 
-void Pociag::set_pociag(string n, int p)
+void Pociag::set_pociag(string n, double p)
 {
     this->nazwa = n;
     this->predkosc = p;
