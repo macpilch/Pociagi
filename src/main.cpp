@@ -5,16 +5,16 @@ using namespace std;
 
 int main(void)
 {
-    Godzina tmp;
+    /*Godzina tmp;
     tmp.godz = 8;
     tmp.min = 15;
     Kurs k1(1, tmp, 100);
 
     cout << "Numer: " << k1.numer << " Odleglosc: " << k1.odleglosc << " Godzina: " 
-         << k1.czas_wyjazdu.godz << " Czas podrozy: " << k1.czas_podrozy;
-    /*wczytaj_miejsce();
+         << k1.czas_wyjazdu.godz << " Czas podrozy: " << k1.czas_podrozy;*/
+    wczytaj_miejsce();
     wczytaj_pociagi();
-    pokaz_menu();*/
+    pokaz_menu();
     return 0;
 }
 

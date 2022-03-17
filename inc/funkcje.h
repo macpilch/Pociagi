@@ -11,6 +11,10 @@
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"
 
+vector<Miejsce> myMiejsca;
+vector<Pociag> myPociagi;
+vector<Kurs> myKursy;
+
 void pokaz_menu(void);
 void pokaz_elementy_miejsc(void);
 void zapisz_miejsce(void);

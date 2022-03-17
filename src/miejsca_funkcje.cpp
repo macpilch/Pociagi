@@ -3,8 +3,6 @@
 
 using namespace std;
 
-vector<Miejsce> myMiejsca;
-
 void pokaz_elementy_miejsc(void)
 {
     int wybor = 0;

@@ -3,8 +3,7 @@
 
 using namespace std;
 
-/*vector<Tor> myTory;
-
+/*
 void pokaz_elementy_torow(void)
 {
     int wybor = 0;

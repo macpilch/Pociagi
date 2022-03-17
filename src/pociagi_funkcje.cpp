@@ -3,8 +3,6 @@
 
 using namespace std;
 
-vector<Pociag> myPociagi;
-
 void pokaz_elementy_pociagow(void)
 {
     int wybor = 0;
@@ -125,7 +123,7 @@ void dodaj_pociag(void)
 {
     string nazwa;
     int predkosc = 0;
-    int ilosc = 0;
+    double ilosc = 0;
 
     cout << "Podaj nazwe pociagu ktora chcesz dodac: \n";
     cin >> nazwa;
@@ -141,8 +139,9 @@ void dodaj_pociag(void)
     }
 
     cout << "Podaj predkosc pociagu: \n";
-    cin >> predkosc;
+    cin >> predkosc; // podanie predkosci w h
 
+    predkosc /= 3600; // zamiana na sekundy
     myPociagi.push_back(Pociag());
     ilosc = myPociagi.size();
     myPociagi[ilosc - 1].set_pociag(nazwa, predkosc);
