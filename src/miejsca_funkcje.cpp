@@ -108,9 +108,12 @@ void pokaz_miejsca(void)
 {
     for (unsigned int i = 0; i < myMiejsca.size(); i++)
     {
-        cout << "Miejscowosc: " << myMiejsca[i].get_nazwa() << endl;
-        cout << "Odleglosc: " << myMiejsca[i].get_odleglosc() << endl;
+        cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].get_nazwa();
+        cout << " Odleglosc: " << myMiejsca[i].get_odleglosc() << endl;
     }
+
+    cout << "\nPodaj numer miejscowosci, ktora chcesz wybrac: ";
+    cin >> nr_miejsca;
 
     if (getch())
     {

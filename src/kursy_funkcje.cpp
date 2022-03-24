@@ -1,33 +1,33 @@
 #include <iostream>
+#include "../inc/kursy.h"
 #include "../inc/funkcje.h"
 
 using namespace std;
 
-/*
-void pokaz_elementy_torow(void)
+void pokaz_elementy_kursow(void)
 {
     int wybor = 0;
 
-    cout << "1. Pokaz tory do wybrania.\n2. Dodaj nowy tor.\n3. Usun tor.\n4. Zapis torow do pliku.\n5. Powrot do menu.\n";
+    cout << "1. Pokaz kursy do wybrania.\n2. Dodaj nowy kurs.\n3. Usun kurs.\n4. Zapis kursow do pliku.\n5. Powrot do menu.\n";
     cin >> wybor;
 
     switch (wybor)
     {
     case 1:
         system("cls");
-        pokaz_tory();
+        pokaz_kursy();
         break;
     case 2:
         system("cls");
-        dodaj_tor();
+        dodaj_kurs();
         break;
     case 3:
         system("cls");
-        usun_tor();
+        usun_kurs();
         break;
     case 4:
         system("cls");
-        zapisz_tory();
+        zapisz_kursy();
         break;
     case 5:
         system("cls");
@@ -36,50 +36,50 @@ void pokaz_elementy_torow(void)
     }
 }
 
-void zapisz_tory(void)
+void zapisz_kursy(void)
 {
-    fstream plik_baza_torow;
-    int wielkosc = myTory.size();
+    fstream plik_baza_kursow;
+    int wielkosc = myKursy.size();
 
-    plik_baza_torow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/tory", fstream::out | fstream::in | ios::trunc);
+    plik_baza_kursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in | ios::trunc);
 
-    if (plik_baza_torow.is_open())
+    if (plik_baza_kursow.is_open())
     {
         cout << "Plik otwarto!" << endl;
 
-        plik_baza_torow << wielkosc << endl;
+        plik_baza_kursow << wielkosc << endl;
 
         for (int i = 0; i < wielkosc; i++)
         {
-            plik_baza_torow << myTory[i].get_numer() << endl;
-            plik_baza_torow << myTory[i].get_poczatek() << endl;
-            plik_baza_torow << myTory[i].get_koniec() << endl;
+            plik_baza_kursow << myKursy[i].get_numer() << endl;
+            plik_baza_kursow << myKursy[i].get_czas_wyjazdu_godz() << endl;
+            plik_baza_kursow << myKursy[i].get_czas_wyjazdu_min() << endl;
         }
     }
     else
     {
-        cout << "Brak pliku z baza danych torow!" << endl;
+        cout << "Brak pliku z baza danych kursow!" << endl;
     }
 
-    plik_baza_torow.close();
-    pokaz_elementy_torow();
+    plik_baza_kursow.close();
+    pokaz_elementy_kursow();
 }
 
-void wczytaj_tory(void)
+void wczytaj_kursy(void)
 {
-    fstream plik_baza_torow;
+    fstream plik_baza_kursow;
     int tmpNum = 0;
-    int tmpPocz = 0;
-    int tmpKon = 0;
+    int tmpGodz = 0;
+    int tmpMin = 0;
     int wielkosc = 0;
 
-    plik_baza_torow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/tory", fstream::out | fstream::in);
+    plik_baza_kursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in);
 
-    if (plik_baza_torow.is_open())
+    if (plik_baza_kursow.is_open())
     {
         cout << "Plik otwarto!" << endl;
 
-        plik_baza_torow >> wielkosc;
+        plik_baza_kursow >> wielkosc;
 
         if (!wielkosc)
         {
@@ -87,83 +87,88 @@ void wczytaj_tory(void)
         }
         else
         {
-            myTory.clear();
+            myKursy.clear();
 
             for (int i = 0; i < wielkosc; i++)
             {
-                plik_baza_torow >> tmpNum;
-                plik_baza_torow >> tmpPocz;
-                plik_baza_torow >> tmpKon;
+                plik_baza_kursow >> tmpNum;
+                plik_baza_kursow >> tmpGodz;
+                plik_baza_kursow >> tmpMin;
 
-                myTory.push_back(Tor());
-                myTory[i].set_tor(tmpNum, tmpPocz, tmpKon);
+                myKursy.push_back(Kurs());
+                myKursy[i].set_kurs(tmpNum, tmpGodz, tmpMin);
             }
         }
     }
     else
     {
-        cout << "Brak pliku z baza danych torow!" << endl;
+        cout << "Brak pliku z baza danych kursow!" << endl;
     }
 
-    plik_baza_torow.close();
+    plik_baza_kursow.close();
 }
 
-void pokaz_tory(void)
+void pokaz_kursy(void)
 {
-    for (unsigned int i = 0; i < myTory.size(); i++)
+    for (unsigned int i = 0; i < myKursy.size(); i++)
     {
-        cout << "Numer: " << myTory[i].get_numer() << endl;
-        cout << "Poczatek: " << myTory[i].get_poczatek() << endl;
-        cout << "Koniec: " << myTory[i].get_koniec() << endl;
+        cout << "Nr. " << myKursy[i].get_numer();
+        cout << " Czas wyjazdu: " << myKursy[i].get_czas_wyjazdu_godz();
+        cout << ":" << myKursy[i].get_czas_wyjazdu_min() << endl;
     }
+
+    cout << "\nPodaj numer kursu, ktory chcesz wybrac: ";
+    cin >> nr_kursu;
+
+    myKursy[nr_kursu - 1].obliczanie_czasu(nr_miejsca, nr_kursu);
 
     if (getch())
     {
         system("cls");
-        pokaz_elementy_torow();
+        pokaz_elementy_kursow();
     }
 }
 
-void dodaj_tor(void)
+void dodaj_kurs(void)
 {
     int numer = 0;
-    int poczatek = 0;
-    int koniec = 0;
+    int godzina = 0;
+    int minuty = 0;
     int ilosc = 0;
 
-    cout << "Podaj numer toru ktory chcesz dodac: \n";
+    cout << "Podaj numer kursu ktory chcesz dodac: \n";
     cin >> numer;
 
-    cout << "Podaj poczatek toru ktory chcesz dodac: \n";
-    cin >> poczatek;
+    cout << "Podaj godzine o ktorej zacznie sie kurs: \n";
+    cin >> godzina;
 
-    cout << "Podaj koniec toru ktory chcesz dodac: \n";
-    cin >> koniec;
+    cout << "Podaj liczbe minut o ktorej zacznie sie kurs: \n";
+    cin >> minuty;
 
-    myTory.push_back(Tor());
-    ilosc = myTory.size();
-    myTory[ilosc - 1].set_tor(numer, poczatek, koniec);
+    myKursy.push_back(Kurs());
+    ilosc = myKursy.size();
+    myKursy[ilosc - 1].set_kurs(numer, godzina, minuty);
 
     system("cls");
-    pokaz_elementy_torow();
+    pokaz_elementy_kursow();
 }
 
-void usun_tor(void)
+void usun_kurs(void)
 {
     unsigned int id = 0;
 
-    cout << "Podaj ID toru, ktory chcesz usunac: \n";
+    cout << "Podaj ID kursu, ktory chcesz usunac: \n";
     cin >> id;
 
-    if (id > myTory.size())
+    if (id > myKursy.size())
     {
-        cout << "Taki tor nie istnieje!" << endl;
+        cout << "Taki kurs nie istnieje!" << endl;
     }
     else
     {
-        myTory.erase(myTory.begin() + id);
+        myKursy.erase(myKursy.begin() + id);
     }
 
     system("cls");
-    pokaz_elementy_torow();
-}*/
+    pokaz_elementy_kursow();
+}

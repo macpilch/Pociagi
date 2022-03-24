@@ -11,6 +11,10 @@
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"
 
+int nr_miejsca;
+int nr_pociagu;
+int nr_kursu;
+
 vector<Miejsce> myMiejsca;
 vector<Pociag> myPociagi;
 vector<Kurs> myKursy;
@@ -29,10 +33,11 @@ void pokaz_pociagi(void);
 void dodaj_pociag(void);
 void usun_pociag(void);
 void pokaz_elementy_kursow(void);
-void zapisz_tory(void);
-void wczytaj_tory(void);
-void pokaz_tory(void);
-void dodaj_tor(void);
-void usun_tor(void);
+void zapisz_kursy(void);
+void wczytaj_kursy(void);
+void pokaz_kursy(void);
+void dodaj_kurs(void);
+void usun_kurs(void);
+void pokaz_podsumowanie(void);
 
 #endif

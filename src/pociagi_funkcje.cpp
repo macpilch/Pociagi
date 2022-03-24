@@ -108,9 +108,12 @@ void pokaz_pociagi(void)
 {
     for (unsigned int i = 0; i < myPociagi.size(); i++)
     {
-        cout << "Nazwa: " << myPociagi[i].get_nazwa() << endl;
-        cout << "Predkosc: " << myPociagi[i].get_predkosc() << endl;
+        cout << "Nr." << i + 1 << " Nazwa: " << myPociagi[i].get_nazwa();
+        cout << " Predkosc: " << myPociagi[i].get_predkosc() << endl;
     }
+
+    cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
+    cin >> nr_pociagu;
 
     if (getch())
     {
@@ -141,7 +144,6 @@ void dodaj_pociag(void)
     cout << "Podaj predkosc pociagu: \n";
     cin >> predkosc; // podanie predkosci w h
 
-    predkosc /= 3600; // zamiana na sekundy
     myPociagi.push_back(Pociag());
     ilosc = myPociagi.size();
     myPociagi[ilosc - 1].set_pociag(nazwa, predkosc);
