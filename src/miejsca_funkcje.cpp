@@ -109,7 +109,7 @@ void pokaz_miejsca(vector<Miejsce> &mm, int *nr_m)
     for (unsigned int i = 0; i < mm.size(); i++)
     {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << mm[i].get_nazwa();
-        cout << " Odleglosc: " << mm[i].get_odleglosc() << " km/h." << endl;
+        cout << " Odleglosc: " << mm[i].get_odleglosc() << " km." << endl;
     }
 
     cout << "\nPodaj numer miejscowosci, ktora chcesz wybrac: ";
