@@ -9,13 +9,13 @@ class Miejsce
 {
 private:
     string nazwa;
-    int odleglosc;
+    double odleglosc;
 
 public:
     Miejsce();
-    void set_miejsce(string, int);
+    void set_miejsce(string, double);
     string get_nazwa(void);
-    int get_odleglosc(void);
+    double get_odleglosc(void);
 };
 
 #endif

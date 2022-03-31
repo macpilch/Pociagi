@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void pokaz_elementy_miejsc(void)
+void pokaz_elementy_miejsc(vector<Miejsce> &mm, int *nr_m)
 {
     int wybor = 0;
 
@@ -14,19 +14,19 @@ void pokaz_elementy_miejsc(void)
     {
     case 1:
         system("cls");
-        pokaz_miejsca();
+        pokaz_miejsca(mm, nr_m);
         break;
     case 2:
         system("cls");
-        dodaj_miejsce();
+        dodaj_miejsce(mm, nr_m);
         break;
     case 3:
         system("cls");
-        usun_miejsce();
+        usun_miejsce(mm, nr_m);
         break;
     case 4:
         system("cls");
-        zapisz_miejsce();
+        zapisz_miejsce(mm, nr_m);
         break;
     case 5:
         system("cls");
@@ -35,10 +35,10 @@ void pokaz_elementy_miejsc(void)
     }
 }
 
-void zapisz_miejsce(void)
+void zapisz_miejsce(vector<Miejsce> &mm, int *nr_m)
 {
     fstream plik_baza_miejsc;
-    int wielkosc = myMiejsca.size();
+    int wielkosc = mm.size();
 
     plik_baza_miejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in | ios::trunc);
 
@@ -50,8 +50,8 @@ void zapisz_miejsce(void)
 
         for (int i = 0; i < wielkosc; i++)
         {
-            plik_baza_miejsc << myMiejsca[i].get_nazwa() << endl;
-            plik_baza_miejsc << myMiejsca[i].get_odleglosc() << endl;
+            plik_baza_miejsc << mm[i].get_nazwa() << endl;
+            plik_baza_miejsc << mm[i].get_odleglosc() << endl;
         }
     }
     else
@@ -60,14 +60,14 @@ void zapisz_miejsce(void)
     }
 
     plik_baza_miejsc.close();
-    pokaz_elementy_miejsc();
+    pokaz_elementy_miejsc(mm, nr_m);
 }
 
-void wczytaj_miejsce(void)
+void wczytaj_miejsce(vector<Miejsce> &mm)
 {
     fstream plik_baza_miejsc;
     string tmpNazwa;
-    int tmpOdlg = 0;
+    double tmpOdlg = 0;
     int wielkosc = 0;
 
     plik_baza_miejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in);
@@ -84,15 +84,15 @@ void wczytaj_miejsce(void)
         }
         else
         {
-            myMiejsca.clear();
+            mm.clear();
 
             for (int i = 0; i < wielkosc; i++)
             {
                 plik_baza_miejsc >> tmpNazwa;
                 plik_baza_miejsc >> tmpOdlg;
 
-                myMiejsca.push_back(Miejsce());
-                myMiejsca[i].set_miejsce(tmpNazwa, tmpOdlg);
+                mm.push_back(Miejsce());
+                mm[i].set_miejsce(tmpNazwa, tmpOdlg);
             }
         }
     }
@@ -104,70 +104,67 @@ void wczytaj_miejsce(void)
     plik_baza_miejsc.close();
 }
 
-void pokaz_miejsca(void)
+void pokaz_miejsca(vector<Miejsce> &mm, int *nr_m)
 {
-    for (unsigned int i = 0; i < myMiejsca.size(); i++)
+    for (unsigned int i = 0; i < mm.size(); i++)
     {
-        cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].get_nazwa();
-        cout << " Odleglosc: " << myMiejsca[i].get_odleglosc() << endl;
+        cout << "Nr. " << i + 1 << " Miejscowosc: " << mm[i].get_nazwa();
+        cout << " Odleglosc: " << mm[i].get_odleglosc() << " km/h." << endl;
     }
 
     cout << "\nPodaj numer miejscowosci, ktora chcesz wybrac: ";
-    cin >> nr_miejsca;
-
-    if (getch())
-    {
-        system("cls");
-        pokaz_elementy_miejsc();
-    }
+    cin >> *nr_m;
+    
+    system("cls");
+    pokaz_elementy_miejsc(mm, nr_m);
 }
 
-void dodaj_miejsce(void)
+void dodaj_miejsce(vector<Miejsce> &mm, int *nr_m)
 {
     string nazwa;
-    int odlg = 0;
+    double odlg = 0;
     int ilosc = 0;
 
     cout << "Podaj nazwe miejscowosci ktora chcesz dodac: \n";
     cin >> nazwa;
 
-    for (unsigned int i = 0; i < myMiejsca.size(); i++)
+    for (unsigned int i = 0; i < mm.size(); i++)
     {
-        if (nazwa == myMiejsca[i].get_nazwa())
+        if (nazwa == mm[i].get_nazwa())
         {
             system("cls");
             cout << "Taka nazwa juz istnieje!\n\n";
-            pokaz_elementy_miejsc();
+            pokaz_elementy_miejsc(mm, nr_m);
         }
     }
 
     cout << "Podaj odleglosc od tej miejscowosci: \n";
     cin >> odlg;
 
-    myMiejsca.push_back(Miejsce());
-    ilosc = myMiejsca.size();
-    myMiejsca[ilosc - 1].set_miejsce(nazwa, odlg);
+    mm.push_back(Miejsce());
+    ilosc = mm.size();
+    mm[ilosc - 1].set_miejsce(nazwa, odlg);
 
     system("cls");
-    pokaz_elementy_miejsc();
+    pokaz_elementy_miejsc(mm, nr_m);
 }
 
-void usun_miejsce(void)
+void usun_miejsce(vector<Miejsce> &mm, int *nr_m)
 {
     unsigned int id = 0;
 
     cout << "Podaj ID miejsca, ktore chcesz usunac: \n";
     cin >> id;
 
-    if (id > myMiejsca.size())
+    if (id > mm.size())
     {
         cout << "Takie miejsce nie istnieje!" << endl;
     }
     else
     {
-        myMiejsca.erase(myMiejsca.begin() + id);
+        mm.erase(mm.begin() + id);
     }
 
     system("cls");
-    pokaz_elementy_miejsc();
+    pokaz_elementy_miejsc(mm, nr_m);
 }

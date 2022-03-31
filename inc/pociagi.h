@@ -9,13 +9,13 @@ class Pociag
 {
 private:
     string nazwa;
-    int predkosc;
+    double predkosc;
 
 public:
     Pociag();
-    void set_pociag(string, int);
+    void set_pociag(string, double);
     string get_nazwa(void);
-    int get_predkosc(void);
+    double get_predkosc(void);
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void pokaz_elementy_pociagow(void)
+void pokaz_elementy_pociagow(vector<Pociag> &mp, int *nr_p)
 {
     int wybor = 0;
 
@@ -14,19 +14,19 @@ void pokaz_elementy_pociagow(void)
     {
     case 1:
         system("cls");
-        pokaz_pociagi();
+        pokaz_pociagi(mp, nr_p);
         break;
     case 2:
         system("cls");
-        dodaj_pociag();
+        dodaj_pociag(mp, nr_p);
         break;
     case 3:
         system("cls");
-        usun_pociag();
+        usun_pociag(mp, nr_p);
         break;
     case 4:
         system("cls");
-        zapisz_pociagi();
+        zapisz_pociagi(mp, nr_p);
         break;
     case 5:
         system("cls");
@@ -35,10 +35,10 @@ void pokaz_elementy_pociagow(void)
     }
 }
 
-void zapisz_pociagi(void)
+void zapisz_pociagi(vector<Pociag> &mp, int *nr_p)
 {
     fstream plik_baza_pociagi;
-    int wielkosc = myPociagi.size();
+    int wielkosc = mp.size();
 
     plik_baza_pociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in | ios::trunc);
 
@@ -50,8 +50,8 @@ void zapisz_pociagi(void)
 
         for (int i = 0; i < wielkosc; i++)
         {
-            plik_baza_pociagi << myPociagi[i].get_nazwa() << endl;
-            plik_baza_pociagi << myPociagi[i].get_predkosc() << endl;
+            plik_baza_pociagi << mp[i].get_nazwa() << endl;
+            plik_baza_pociagi << mp[i].get_predkosc() << endl;
         }
     }
     else
@@ -60,14 +60,14 @@ void zapisz_pociagi(void)
     }
 
     plik_baza_pociagi.close();
-    pokaz_elementy_pociagow();
+    pokaz_elementy_pociagow(mp, nr_p);
 }
 
-void wczytaj_pociagi(void)
+void wczytaj_pociagi(vector<Pociag> &mp)
 {
     fstream plik_baza_pociagi;
     string tmpNazwa;
-    int tmpPred = 0;
+    double tmpPred = 0;
     int wielkosc = 0;
 
     plik_baza_pociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in);
@@ -84,15 +84,15 @@ void wczytaj_pociagi(void)
         }
         else
         {
-            myPociagi.clear();
+            mp.clear();
 
             for (int i = 0; i < wielkosc; i++)
             {
                 plik_baza_pociagi >> tmpNazwa;
                 plik_baza_pociagi >> tmpPred;
 
-                myPociagi.push_back(Pociag());
-                myPociagi[i].set_pociag(tmpNazwa, tmpPred);
+                mp.push_back(Pociag());
+                mp[i].set_pociag(tmpNazwa, tmpPred);
             }
         }
     }
@@ -104,70 +104,67 @@ void wczytaj_pociagi(void)
     plik_baza_pociagi.close();
 }
 
-void pokaz_pociagi(void)
+void pokaz_pociagi(vector<Pociag> &mp, int *nr_p)
 {
-    for (unsigned int i = 0; i < myPociagi.size(); i++)
+    for (unsigned int i = 0; i < mp.size(); i++)
     {
-        cout << "Nr." << i + 1 << " Nazwa: " << myPociagi[i].get_nazwa();
-        cout << " Predkosc: " << myPociagi[i].get_predkosc() << endl;
+        cout << "Nr. " << i + 1 << " Nazwa: " << mp[i].get_nazwa();
+        cout << " Predkosc: " << mp[i].get_predkosc() << " km/h." << endl;
     }
 
     cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
-    cin >> nr_pociagu;
+    cin >> *nr_p;
 
-    if (getch())
-    {
-        system("cls");
-        pokaz_elementy_pociagow();
-    }
+    system("cls");
+    pokaz_elementy_pociagow(mp, nr_p);
 }
 
-void dodaj_pociag(void)
+void dodaj_pociag(vector<Pociag> &mp, int *nr_p)
 {
     string nazwa;
-    int predkosc = 0;
-    double ilosc = 0;
+    double predkosc = 0;
+    int ilosc = 0;
 
     cout << "Podaj nazwe pociagu ktora chcesz dodac: \n";
     cin >> nazwa;
 
-    for (unsigned int i = 0; i < myPociagi.size(); i++)
+    for (unsigned int i = 0; i < mp.size(); i++)
     {
-        if (nazwa == myPociagi[i].get_nazwa())
+        if (nazwa == mp[i].get_nazwa())
         {
             system("cls");
             cout << "Taka nazwa juz istnieje!\n\n";
-            pokaz_elementy_pociagow();
+            pokaz_elementy_pociagow(mp, nr_p);
         }
     }
 
     cout << "Podaj predkosc pociagu: \n";
     cin >> predkosc; // podanie predkosci w h
 
-    myPociagi.push_back(Pociag());
-    ilosc = myPociagi.size();
-    myPociagi[ilosc - 1].set_pociag(nazwa, predkosc);
+    mp.push_back(Pociag());
+    ilosc = mp.size();
+    mp[ilosc - 1].set_pociag(nazwa, predkosc);
 
     system("cls");
-    pokaz_elementy_pociagow();
+    pokaz_elementy_pociagow(mp, nr_p);
 }
 
-void usun_pociag(void)
+void usun_pociag(vector<Pociag> &mp, int *nr_p)
 {
     unsigned int id = 0;
 
     cout << "Podaj ID pociagu, ktore chcesz usunac: \n";
     cin >> id;
 
-    if (id > myPociagi.size())
+    if (id > mp.size())
     {
         cout << "Taki pociag nie istnieje!" << endl;
     }
     else
     {
-        myPociagi.erase(myPociagi.begin() + id);
+        mp.erase(mp.begin() + id);
     }
 
     system("cls");
-    pokaz_elementy_pociagow();
+    pokaz_elementy_pociagow(mp, nr_p);
 }
