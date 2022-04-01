@@ -3,30 +3,30 @@
 
 using namespace std;
 
-void pokaz_elementy_pociagow(vector<Pociag> &mp, int *nr_p)
+void pokaz_elementy_pociagow(vector<Pociag> &mp)
 {
     int wybor = 0;
 
-    cout << "1. Pokaz pociagi do wybrania.\n2. Dodaj nowy pociag.\n3. Usun pociag.\n4. Zapis pociagow do pliku.\n5. Powrot do menu.\n";
+    cout << "MENU POCIAGOW (wybierz odpowiednia opcje):\n\n1. Pokaz pociagi do wybrania.\n2. Dodaj nowy pociag.\n3. Usun pociag.\n4. Zapis pociagow do pliku.\n5. Powrot do menu.\n";
     cin >> wybor;
 
     switch (wybor)
     {
     case 1:
         system("cls");
-        pokaz_pociagi(mp, nr_p);
+        pokaz_pociagi(mp);
         break;
     case 2:
         system("cls");
-        dodaj_pociag(mp, nr_p);
+        dodaj_pociag(mp);
         break;
     case 3:
         system("cls");
-        usun_pociag(mp, nr_p);
+        usun_pociag(mp);
         break;
     case 4:
         system("cls");
-        zapisz_pociagi(mp, nr_p);
+        zapisz_pociagi(mp);
         break;
     case 5:
         system("cls");
@@ -35,7 +35,7 @@ void pokaz_elementy_pociagow(vector<Pociag> &mp, int *nr_p)
     }
 }
 
-void zapisz_pociagi(vector<Pociag> &mp, int *nr_p)
+void zapisz_pociagi(vector<Pociag> &mp)
 {
     fstream plik_baza_pociagi;
     int wielkosc = mp.size();
@@ -60,7 +60,7 @@ void zapisz_pociagi(vector<Pociag> &mp, int *nr_p)
     }
 
     plik_baza_pociagi.close();
-    pokaz_elementy_pociagow(mp, nr_p);
+    pokaz_elementy_pociagow(mp);
 }
 
 void wczytaj_pociagi(vector<Pociag> &mp)
@@ -104,7 +104,7 @@ void wczytaj_pociagi(vector<Pociag> &mp)
     plik_baza_pociagi.close();
 }
 
-void pokaz_pociagi(vector<Pociag> &mp, int *nr_p)
+void pokaz_pociagi(vector<Pociag> &mp)
 {
     for (unsigned int i = 0; i < mp.size(); i++)
     {
@@ -112,14 +112,14 @@ void pokaz_pociagi(vector<Pociag> &mp, int *nr_p)
         cout << " Predkosc: " << mp[i].get_predkosc() << " km/h." << endl;
     }
 
-    cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
-    cin >> *nr_p;
-
-    system("cls");
-    pokaz_elementy_pociagow(mp, nr_p);
+    if (getch())
+    {
+        system("cls");
+        pokaz_elementy_pociagow(mp);
+    }
 }
 
-void dodaj_pociag(vector<Pociag> &mp, int *nr_p)
+void dodaj_pociag(vector<Pociag> &mp)
 {
     string nazwa;
     double predkosc = 0;
@@ -134,7 +134,7 @@ void dodaj_pociag(vector<Pociag> &mp, int *nr_p)
         {
             system("cls");
             cout << "Taka nazwa juz istnieje!\n\n";
-            pokaz_elementy_pociagow(mp, nr_p);
+            pokaz_elementy_pociagow(mp);
         }
     }
 
@@ -146,10 +146,10 @@ void dodaj_pociag(vector<Pociag> &mp, int *nr_p)
     mp[ilosc - 1].set_pociag(nazwa, predkosc);
 
     system("cls");
-    pokaz_elementy_pociagow(mp, nr_p);
+    pokaz_elementy_pociagow(mp);
 }
 
-void usun_pociag(vector<Pociag> &mp, int *nr_p)
+void usun_pociag(vector<Pociag> &mp)
 {
     unsigned int id = 0;
 
@@ -166,5 +166,5 @@ void usun_pociag(vector<Pociag> &mp, int *nr_p)
     }
 
     system("cls");
-    pokaz_elementy_pociagow(mp, nr_p);
+    pokaz_elementy_pociagow(mp);
 }

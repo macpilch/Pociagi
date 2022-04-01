@@ -3,30 +3,30 @@
 
 using namespace std;
 
-void pokaz_elementy_miejsc(vector<Miejsce> &mm, int *nr_m)
+void pokaz_elementy_miejsc(vector<Miejsce> &mm)
 {
     int wybor = 0;
 
-    cout << "1. Pokaz miejsca do wybrania.\n2. Dodaj nowe miejsce.\n3. Usun miejsce.\n4. Zapis miejsc do pliku.\n5. Powrot do menu.\n";
+    cout << "MENU MIEJSC (wybierz odpowiednia opcje):\n\n1. Pokaz miejsca do wybrania.\n2. Dodaj nowe miejsce.\n3. Usun miejsce.\n4. Zapis miejsc do pliku.\n5. Powrot do menu.\n";
     cin >> wybor;
 
     switch (wybor)
     {
     case 1:
         system("cls");
-        pokaz_miejsca(mm, nr_m);
+        pokaz_miejsca(mm);
         break;
     case 2:
         system("cls");
-        dodaj_miejsce(mm, nr_m);
+        dodaj_miejsce(mm);
         break;
     case 3:
         system("cls");
-        usun_miejsce(mm, nr_m);
+        usun_miejsce(mm);
         break;
     case 4:
         system("cls");
-        zapisz_miejsce(mm, nr_m);
+        zapisz_miejsce(mm);
         break;
     case 5:
         system("cls");
@@ -35,7 +35,7 @@ void pokaz_elementy_miejsc(vector<Miejsce> &mm, int *nr_m)
     }
 }
 
-void zapisz_miejsce(vector<Miejsce> &mm, int *nr_m)
+void zapisz_miejsce(vector<Miejsce> &mm)
 {
     fstream plik_baza_miejsc;
     int wielkosc = mm.size();
@@ -60,7 +60,7 @@ void zapisz_miejsce(vector<Miejsce> &mm, int *nr_m)
     }
 
     plik_baza_miejsc.close();
-    pokaz_elementy_miejsc(mm, nr_m);
+    pokaz_elementy_miejsc(mm);
 }
 
 void wczytaj_miejsce(vector<Miejsce> &mm)
@@ -104,7 +104,7 @@ void wczytaj_miejsce(vector<Miejsce> &mm)
     plik_baza_miejsc.close();
 }
 
-void pokaz_miejsca(vector<Miejsce> &mm, int *nr_m)
+void pokaz_miejsca(vector<Miejsce> &mm)
 {
     for (unsigned int i = 0; i < mm.size(); i++)
     {
@@ -112,14 +112,14 @@ void pokaz_miejsca(vector<Miejsce> &mm, int *nr_m)
         cout << " Odleglosc: " << mm[i].get_odleglosc() << " km." << endl;
     }
 
-    cout << "\nPodaj numer miejscowosci, ktora chcesz wybrac: ";
-    cin >> *nr_m;
-    
-    system("cls");
-    pokaz_elementy_miejsc(mm, nr_m);
+    if (getch())
+    {
+        system("cls");
+        pokaz_elementy_miejsc(mm);
+    }
 }
 
-void dodaj_miejsce(vector<Miejsce> &mm, int *nr_m)
+void dodaj_miejsce(vector<Miejsce> &mm)
 {
     string nazwa;
     double odlg = 0;
@@ -134,7 +134,7 @@ void dodaj_miejsce(vector<Miejsce> &mm, int *nr_m)
         {
             system("cls");
             cout << "Taka nazwa juz istnieje!\n\n";
-            pokaz_elementy_miejsc(mm, nr_m);
+            pokaz_elementy_miejsc(mm);
         }
     }
 
@@ -146,10 +146,10 @@ void dodaj_miejsce(vector<Miejsce> &mm, int *nr_m)
     mm[ilosc - 1].set_miejsce(nazwa, odlg);
 
     system("cls");
-    pokaz_elementy_miejsc(mm, nr_m);
+    pokaz_elementy_miejsc(mm);
 }
 
-void usun_miejsce(vector<Miejsce> &mm, int *nr_m)
+void usun_miejsce(vector<Miejsce> &mm)
 {
     unsigned int id = 0;
 
@@ -166,5 +166,5 @@ void usun_miejsce(vector<Miejsce> &mm, int *nr_m)
     }
 
     system("cls");
-    pokaz_elementy_miejsc(mm, nr_m);
+    pokaz_elementy_miejsc(mm);
 }

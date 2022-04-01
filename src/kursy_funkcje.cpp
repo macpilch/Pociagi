@@ -4,30 +4,30 @@
 
 using namespace std;
 
-void pokaz_elementy_kursow(vector<Kurs> &mk, int *nr_k)
+void pokaz_elementy_kursow(vector<Kurs> &mk)
 {
     int wybor = 0;
 
-    cout << "1. Pokaz kursy do wybrania.\n2. Dodaj nowy kurs.\n3. Usun kurs.\n4. Zapis kursow do pliku.\n5. Powrot do menu.\n";
+    cout << "MENU KURSOW (wybierz odpowiednia opcje):\n\n1. Pokaz kursy do wybrania.\n2. Dodaj nowy kurs.\n3. Usun kurs.\n4. Zapis kursow do pliku.\n5. Powrot do menu.\n";
     cin >> wybor;
 
     switch (wybor)
     {
     case 1:
         system("cls");
-        pokaz_kursy(mk, nr_k);
+        pokaz_kursy(mk);
         break;
     case 2:
         system("cls");
-        dodaj_kurs(mk, nr_k);
+        dodaj_kurs(mk);
         break;
     case 3:
         system("cls");
-        usun_kurs(mk, nr_k);
+        usun_kurs(mk);
         break;
     case 4:
         system("cls");
-        zapisz_kursy(mk, nr_k);
+        zapisz_kursy(mk);
         break;
     case 5:
         system("cls");
@@ -36,7 +36,7 @@ void pokaz_elementy_kursow(vector<Kurs> &mk, int *nr_k)
     }
 }
 
-void zapisz_kursy(vector<Kurs> &mk, int *nr_k)
+void zapisz_kursy(vector<Kurs> &mk)
 {
     fstream plik_baza_kursow;
     int wielkosc = mk.size();
@@ -61,7 +61,7 @@ void zapisz_kursy(vector<Kurs> &mk, int *nr_k)
     }
 
     plik_baza_kursow.close();
-    pokaz_elementy_kursow(mk, nr_k);
+    pokaz_elementy_kursow(mk);
 }
 
 void wczytaj_kursy(vector<Kurs> &mk)
@@ -105,12 +105,12 @@ void wczytaj_kursy(vector<Kurs> &mk)
     plik_baza_kursow.close();
 }
 
-void pokaz_kursy(vector<Kurs> &mk, int *nr_k)
+void pokaz_kursy(vector<Kurs> &mk)
 {
     for (unsigned int i = 0; i < mk.size(); i++)
     {
         cout << "Nr. " << i + 1;
-        
+
         if (mk[i].get_czas_wyjazdu_godz() > 9 && mk[i].get_czas_wyjazdu_godz() < 24)
         {
             cout << " Czas wyjazdu: " << mk[i].get_czas_wyjazdu_godz();
@@ -120,7 +120,7 @@ void pokaz_kursy(vector<Kurs> &mk, int *nr_k)
             cout << " Czas wyjazdu: 0" << mk[i].get_czas_wyjazdu_godz();
         }
 
-        if(mk[i].get_czas_wyjazdu_min() > 9 && mk[i].get_czas_wyjazdu_min() < 59)
+        if (mk[i].get_czas_wyjazdu_min() > 9 && mk[i].get_czas_wyjazdu_min() < 59)
         {
             cout << ":" << mk[i].get_czas_wyjazdu_min() << "." << endl;
         }
@@ -130,14 +130,14 @@ void pokaz_kursy(vector<Kurs> &mk, int *nr_k)
         }
     }
 
-    cout << "\nPodaj numer kursu, ktory chcesz wybrac: ";
-    cin >> *nr_k;
-
-    system("cls");
-    pokaz_elementy_kursow(mk, nr_k);
+    if (getch())
+    {
+        system("cls");
+        pokaz_elementy_kursow(mk);
+    }
 }
 
-void dodaj_kurs(vector<Kurs> &mk, int *nr_k)
+void dodaj_kurs(vector<Kurs> &mk)
 {
     int godzina = 0;
     int minuty = 0;
@@ -154,10 +154,10 @@ void dodaj_kurs(vector<Kurs> &mk, int *nr_k)
     mk[ilosc - 1].set_kurs(godzina, minuty);
 
     system("cls");
-    pokaz_elementy_kursow(mk, nr_k);
+    pokaz_elementy_kursow(mk);
 }
 
-void usun_kurs(vector<Kurs> &mk, int *nr_k)
+void usun_kurs(vector<Kurs> &mk)
 {
     unsigned int id = 0;
 
@@ -174,5 +174,5 @@ void usun_kurs(vector<Kurs> &mk, int *nr_k)
     }
 
     system("cls");
-    pokaz_elementy_kursow(mk, nr_k);
+    pokaz_elementy_kursow(mk);
 }

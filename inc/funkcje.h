@@ -11,26 +11,29 @@
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"
 
-void pokaz_elementy_miejsc(vector<Miejsce> &mm, int *nr_m);
-void zapisz_miejsce(vector<Miejsce> &mm, int *nr_m);
+void pokaz_elementy_miejsc(vector<Miejsce> &mm);
+void zapisz_miejsce(vector<Miejsce> &mm);
 void wczytaj_miejsce(vector<Miejsce> &mm);
-void pokaz_miejsca(vector<Miejsce> &mm, int *nr_m);
-void dodaj_miejsce(vector<Miejsce> &mm, int *nr_m);
-void usun_miejsce(vector<Miejsce> &mm, int *nr_m);
+void pokaz_miejsca(vector<Miejsce> &mm);
+void wybierz_miejsce(void);
+void dodaj_miejsce(vector<Miejsce> &mm);
+void usun_miejsce(vector<Miejsce> &mm);
 
-void pokaz_elementy_pociagow(vector<Pociag> &mp, int *nr_p);
-void zapisz_pociagi(vector<Pociag> &mp, int *nr_p);
+void pokaz_elementy_pociagow(vector<Pociag> &mp);
+void zapisz_pociagi(vector<Pociag> &mp);
 void wczytaj_pociagi(vector<Pociag> &mp);
-void pokaz_pociagi(vector<Pociag> &mp, int *nr_p);
-void dodaj_pociag(vector<Pociag> &mp, int *nr_p);
-void usun_pociag(vector<Pociag> &mp, int *nr_p);
+void pokaz_pociagi(vector<Pociag> &mp);
+void wybierz_pociag(void);
+void dodaj_pociag(vector<Pociag> &mp);
+void usun_pociag(vector<Pociag> &mp);
 
-void pokaz_elementy_kursow(vector<Kurs> &mk, int *nr_k);
-void zapisz_kursy(vector<Kurs> &mk, int *nr_k);
+void pokaz_elementy_kursow(vector<Kurs> &mk);
+void zapisz_kursy(vector<Kurs> &mk);
 void wczytaj_kursy(vector<Kurs> &mk);
-void pokaz_kursy(vector<Kurs> &mk, int *nr_k);
-void dodaj_kurs(vector<Kurs> &mk, int *nr_k);
-void usun_kurs(vector<Kurs> &mk, int *nr_k);
+void pokaz_kursy(vector<Kurs> &mk);
+void wybierz_kurs(void);
+void dodaj_kurs(vector<Kurs> &mk);
+void usun_kurs(vector<Kurs> &mk);
 
 void pokaz_menu(void);
 void obliczanie_czasu(void);
