@@ -1,25 +1,23 @@
 #ifndef _KURSY_
 #define _KURSY_
 
-struct Godzina
-{
+struct Godzina {
     int min;
     int godz;
 };
 
-class Kurs
-{
+class Kurs {
 public:
-    double czas_podrozy;
-    Godzina czas_wyjazdu;
-    Godzina czas_przyjazdu;
+    double czasPodrozy;
+    Godzina czasWyjazdu;
+    Godzina czasPrzyjazdu;
 
     Kurs();
     Kurs(int, int);
 
-    int get_czas_wyjazdu_godz(void);
-    int get_czas_wyjazdu_min(void);
-    void set_kurs(int, int);
+    int getCzasWyjazduGodz(void);
+    int getCzasWyjazduMin(void);
+    void setKurs(int, int);
 };
 
 #endif

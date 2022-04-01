@@ -4,141 +4,116 @@
 
 using namespace std;
 
-void pokaz_elementy_kursow(vector<Kurs> &mk)
-{
+void pokazElementyKursow(vector<Kurs> &mK) {
     int wybor = 0;
 
     cout << "MENU KURSOW (wybierz odpowiednia opcje):\n\n1. Pokaz kursy do wybrania.\n2. Dodaj nowy kurs.\n3. Usun kurs.\n4. Zapis kursow do pliku.\n5. Powrot do menu.\n";
     cin >> wybor;
 
-    switch (wybor)
-    {
+    switch(wybor) {
     case 1:
         system("cls");
-        pokaz_kursy(mk);
+        pokazKursy(mK);
         break;
     case 2:
         system("cls");
-        dodaj_kurs(mk);
+        dodajKurs(mK);
         break;
     case 3:
         system("cls");
-        usun_kurs(mk);
+        usunKurs(mK);
         break;
     case 4:
         system("cls");
-        zapisz_kursy(mk);
+        zapiszKursy(mK);
         break;
     case 5:
         system("cls");
-        pokaz_menu();
+        pokazMenu();
         break;
     }
 }
 
-void zapisz_kursy(vector<Kurs> &mk)
-{
-    fstream plik_baza_kursow;
-    int wielkosc = mk.size();
+void zapiszKursy(vector<Kurs> &mK) {
+    fstream plikBazaKursow;
+    int wielkosc = mK.size();
 
-    plik_baza_kursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in | ios::trunc);
+    plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in | ios::trunc);
 
-    if (plik_baza_kursow.is_open())
-    {
+    if(plikBazaKursow.is_open()) {
         cout << "Plik otwarto!" << endl;
 
-        plik_baza_kursow << wielkosc << endl;
+        plikBazaKursow << wielkosc << endl;
 
-        for (int i = 0; i < wielkosc; i++)
-        {
-            plik_baza_kursow << mk[i].get_czas_wyjazdu_godz() << endl;
-            plik_baza_kursow << mk[i].get_czas_wyjazdu_min() << endl;
+        for(int i = 0; i < wielkosc; i++) {
+            plikBazaKursow << mK[i].getCzasWyjazduGodz() << endl;
+            plikBazaKursow << mK[i].getCzasWyjazduMin() << endl;
         }
-    }
-    else
-    {
+    } else {
         cout << "Brak pliku z baza danych kursow!" << endl;
     }
 
-    plik_baza_kursow.close();
-    pokaz_elementy_kursow(mk);
+    plikBazaKursow.close();
+    pokazElementyKursow(mK);
 }
 
-void wczytaj_kursy(vector<Kurs> &mk)
-{
-    fstream plik_baza_kursow;
+void wczytajKursy(vector<Kurs> &mK) {
+    fstream plikBazaKursow;
     int tmpGodz = 0;
     int tmpMin = 0;
     int wielkosc = 0;
 
-    plik_baza_kursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in);
+    plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in);
 
-    if (plik_baza_kursow.is_open())
-    {
+    if(plikBazaKursow.is_open()) {
         cout << "Plik otwarto!" << endl;
 
-        plik_baza_kursow >> wielkosc;
+        plikBazaKursow >> wielkosc;
 
-        if (!wielkosc)
-        {
+        if(!wielkosc) {
             cout << "Baza danych jest pusta!" << endl;
-        }
-        else
-        {
-            mk.clear();
+        } else {
+            mK.clear();
 
-            for (int i = 0; i < wielkosc; i++)
-            {
-                plik_baza_kursow >> tmpGodz;
-                plik_baza_kursow >> tmpMin;
+            for(int i = 0; i < wielkosc; i++) {
+                plikBazaKursow >> tmpGodz;
+                plikBazaKursow >> tmpMin;
 
-                mk.push_back(Kurs());
-                mk[i].set_kurs(tmpGodz, tmpMin);
+                mK.push_back(Kurs());
+                mK[i].setKurs(tmpGodz, tmpMin);
             }
         }
-    }
-    else
-    {
+    } else {
         cout << "Brak pliku z baza danych kursow!" << endl;
     }
 
-    plik_baza_kursow.close();
+    plikBazaKursow.close();
 }
 
-void pokaz_kursy(vector<Kurs> &mk)
-{
-    for (unsigned int i = 0; i < mk.size(); i++)
-    {
+void pokazKursy(vector<Kurs> &mK) {
+    for(unsigned int i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
 
-        if (mk[i].get_czas_wyjazdu_godz() > 9 && mk[i].get_czas_wyjazdu_godz() < 24)
-        {
-            cout << " Czas wyjazdu: " << mk[i].get_czas_wyjazdu_godz();
-        }
-        else
-        {
-            cout << " Czas wyjazdu: 0" << mk[i].get_czas_wyjazdu_godz();
+        if(mK[i].getCzasWyjazduGodz() > 9 && mK[i].getCzasWyjazduGodz() < 24) {
+            cout << " Czas wyjazdu: " << mK[i].getCzasWyjazduGodz();
+        } else {
+            cout << " Czas wyjazdu: 0" << mK[i].getCzasWyjazduGodz();
         }
 
-        if (mk[i].get_czas_wyjazdu_min() > 9 && mk[i].get_czas_wyjazdu_min() < 59)
-        {
-            cout << ":" << mk[i].get_czas_wyjazdu_min() << "." << endl;
-        }
-        else
-        {
-            cout << ":0" << mk[i].get_czas_wyjazdu_min() << "." << endl;
+        if(mK[i].getCzasWyjazduMin() > 9 && mK[i].getCzasWyjazduMin() < 59) {
+            cout << ":" << mK[i].getCzasWyjazduMin() << "." << endl;
+        } else {
+            cout << ":0" << mK[i].getCzasWyjazduMin() << "." << endl;
         }
     }
 
-    if (getch())
-    {
+    if(getch()) {
         system("cls");
-        pokaz_elementy_kursow(mk);
+        pokazElementyKursow(mK);
     }
 }
 
-void dodaj_kurs(vector<Kurs> &mk)
-{
+void dodajKurs(vector<Kurs> &mK) {
     int godzina = 0;
     int minuty = 0;
     int ilosc = 0;
@@ -149,30 +124,26 @@ void dodaj_kurs(vector<Kurs> &mk)
     cout << "Podaj liczbe minut o ktorej zacznie sie kurs: \n";
     cin >> minuty;
 
-    mk.push_back(Kurs());
-    ilosc = mk.size();
-    mk[ilosc - 1].set_kurs(godzina, minuty);
+    mK.push_back(Kurs());
+    ilosc = mK.size();
+    mK[ilosc - 1].setKurs(godzina, minuty);
 
     system("cls");
-    pokaz_elementy_kursow(mk);
+    pokazElementyKursow(mK);
 }
 
-void usun_kurs(vector<Kurs> &mk)
-{
+void usunKurs(vector<Kurs> &mK) {
     unsigned int id = 0;
 
     cout << "Podaj ID kursu, ktory chcesz usunac: \n";
     cin >> id;
 
-    if (id > mk.size())
-    {
+    if(id > mK.size()) {
         cout << "Taki kurs nie istnieje!" << endl;
-    }
-    else
-    {
-        mk.erase(mk.begin() + id);
+    } else {
+        mK.erase(mK.begin() + id);
     }
 
     system("cls");
-    pokaz_elementy_kursow(mk);
+    pokazElementyKursow(mK);
 }

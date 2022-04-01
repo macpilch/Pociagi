@@ -5,17 +5,16 @@
 
 using namespace std;
 
-class Miejsce
-{
+class Miejsce {
 private:
     string nazwa;
     double odleglosc;
 
 public:
     Miejsce();
-    void set_miejsce(string, double);
-    string get_nazwa(void);
-    double get_odleglosc(void);
+    void setMiejsce(string, double);
+    string getNazwa(void);
+    double getOdleglosc(void);
 };
 
 #endif

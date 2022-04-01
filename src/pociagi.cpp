@@ -3,23 +3,19 @@
 
 using namespace std;
 
-Pociag::Pociag()
-{
+Pociag::Pociag() {
     cout << "Poprawnie stworzono konstruktor (Pociagi)!" << endl;
 }
 
-void Pociag::set_pociag(string n, double p)
-{
+void Pociag::setPociag(string n, double p) {
     this->nazwa = n;
     this->predkosc = p;
 }
 
-string Pociag::get_nazwa(void)
-{
+string Pociag::getNazwa(void) {
     return this->nazwa;
 }
 
-double Pociag::get_predkosc(void)
-{
+double Pociag::getPredkosc(void) {
     return this->predkosc;
 }

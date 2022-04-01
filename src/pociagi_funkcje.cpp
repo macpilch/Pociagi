@@ -3,124 +3,105 @@
 
 using namespace std;
 
-void pokaz_elementy_pociagow(vector<Pociag> &mp)
-{
+void pokazElementyPociagow(vector<Pociag> &mP) {
     int wybor = 0;
 
     cout << "MENU POCIAGOW (wybierz odpowiednia opcje):\n\n1. Pokaz pociagi do wybrania.\n2. Dodaj nowy pociag.\n3. Usun pociag.\n4. Zapis pociagow do pliku.\n5. Powrot do menu.\n";
     cin >> wybor;
 
-    switch (wybor)
-    {
+    switch(wybor) {
     case 1:
         system("cls");
-        pokaz_pociagi(mp);
+        pokazPociagi(mP);
         break;
     case 2:
         system("cls");
-        dodaj_pociag(mp);
+        dodajPociag(mP);
         break;
     case 3:
         system("cls");
-        usun_pociag(mp);
+        usunPociag(mP);
         break;
     case 4:
         system("cls");
-        zapisz_pociagi(mp);
+        zapiszPociagi(mP);
         break;
     case 5:
         system("cls");
-        pokaz_menu();
+        pokazMenu();
         break;
     }
 }
 
-void zapisz_pociagi(vector<Pociag> &mp)
-{
-    fstream plik_baza_pociagi;
-    int wielkosc = mp.size();
+void zapiszPociagi(vector<Pociag> &mP) {
+    fstream plikBazaPociagi;
+    int wielkosc = mP.size();
 
-    plik_baza_pociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in | ios::trunc);
+    plikBazaPociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in | ios::trunc);
 
-    if (plik_baza_pociagi.is_open())
-    {
+    if(plikBazaPociagi.is_open()) {
         cout << "Plik otwarto!" << endl;
 
-        plik_baza_pociagi << wielkosc << endl;
+        plikBazaPociagi << wielkosc << endl;
 
-        for (int i = 0; i < wielkosc; i++)
-        {
-            plik_baza_pociagi << mp[i].get_nazwa() << endl;
-            plik_baza_pociagi << mp[i].get_predkosc() << endl;
+        for(int i = 0; i < wielkosc; i++) {
+            plikBazaPociagi << mP[i].getNazwa() << endl;
+            plikBazaPociagi << mP[i].getPredkosc() << endl;
         }
-    }
-    else
-    {
+    } else {
         cout << "Brak pliku z baza danych pociagow!" << endl;
     }
 
-    plik_baza_pociagi.close();
-    pokaz_elementy_pociagow(mp);
+    plikBazaPociagi.close();
+    pokazElementyPociagow(mP);
 }
 
-void wczytaj_pociagi(vector<Pociag> &mp)
-{
-    fstream plik_baza_pociagi;
+void wczytajPociagi(vector<Pociag> &mP) {
+    fstream plikBazaPociagi;
     string tmpNazwa;
     double tmpPred = 0;
     int wielkosc = 0;
 
-    plik_baza_pociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in);
+    plikBazaPociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in);
 
-    if (plik_baza_pociagi.is_open())
-    {
+    if(plikBazaPociagi.is_open()) {
         cout << "Plik otwarto!" << endl;
 
-        plik_baza_pociagi >> wielkosc;
+        plikBazaPociagi >> wielkosc;
 
-        if (!wielkosc)
-        {
+        if(!wielkosc) {
             cout << "Baza danych pociagow pusta!" << endl;
-        }
-        else
-        {
-            mp.clear();
+        } else {
+            mP.clear();
 
-            for (int i = 0; i < wielkosc; i++)
-            {
-                plik_baza_pociagi >> tmpNazwa;
-                plik_baza_pociagi >> tmpPred;
+            for(int i = 0; i < wielkosc; i++) {
+                plikBazaPociagi >> tmpNazwa;
+                plikBazaPociagi >> tmpPred;
 
-                mp.push_back(Pociag());
-                mp[i].set_pociag(tmpNazwa, tmpPred);
+                mP.push_back(Pociag());
+                mP[i].setPociag(tmpNazwa, tmpPred);
             }
         }
-    }
-    else
-    {
+    } else {
         cout << "Brak pliku z baza danych pociagow!" << endl;
     }
 
-    plik_baza_pociagi.close();
+    plikBazaPociagi.close();
 }
 
-void pokaz_pociagi(vector<Pociag> &mp)
-{
-    for (unsigned int i = 0; i < mp.size(); i++)
-    {
-        cout << "Nr. " << i + 1 << " Nazwa: " << mp[i].get_nazwa();
-        cout << " Predkosc: " << mp[i].get_predkosc() << " km/h." << endl;
+void pokazPociagi(vector<Pociag> &mP) {
+    for(unsigned int i = 0; i < mP.size(); i++) {
+        cout << "Nr. " << i + 1 << " Nazwa: " << mP[i].getNazwa();
+        cout << " Predkosc: " << mP[i].getPredkosc() << " km/h." << endl;
     }
 
-    if (getch())
-    {
+    if(getch()) {
         system("cls");
-        pokaz_elementy_pociagow(mp);
+        pokazElementyPociagow(mP);
     }
 }
 
-void dodaj_pociag(vector<Pociag> &mp)
-{
+void dodajPociag(vector<Pociag> &mP) {
     string nazwa;
     double predkosc = 0;
     int ilosc = 0;
@@ -128,43 +109,37 @@ void dodaj_pociag(vector<Pociag> &mp)
     cout << "Podaj nazwe pociagu ktora chcesz dodac: \n";
     cin >> nazwa;
 
-    for (unsigned int i = 0; i < mp.size(); i++)
-    {
-        if (nazwa == mp[i].get_nazwa())
-        {
+    for(unsigned int i = 0; i < mP.size(); i++) {
+        if(nazwa == mP[i].getNazwa()) {
             system("cls");
             cout << "Taka nazwa juz istnieje!\n\n";
-            pokaz_elementy_pociagow(mp);
+            pokazElementyPociagow(mP);
         }
     }
 
     cout << "Podaj predkosc pociagu: \n";
     cin >> predkosc; // podanie predkosci w h
 
-    mp.push_back(Pociag());
-    ilosc = mp.size();
-    mp[ilosc - 1].set_pociag(nazwa, predkosc);
+    mP.push_back(Pociag());
+    ilosc = mP.size();
+    mP[ilosc - 1].setPociag(nazwa, predkosc);
 
     system("cls");
-    pokaz_elementy_pociagow(mp);
+    pokazElementyPociagow(mP);
 }
 
-void usun_pociag(vector<Pociag> &mp)
-{
+void usunPociag(vector<Pociag> &mP) {
     unsigned int id = 0;
 
     cout << "Podaj ID pociagu, ktore chcesz usunac: \n";
     cin >> id;
 
-    if (id > mp.size())
-    {
+    if(id > mP.size()) {
         cout << "Taki pociag nie istnieje!" << endl;
-    }
-    else
-    {
-        mp.erase(mp.begin() + id);
+    } else {
+        mP.erase(mP.begin() + id);
     }
 
     system("cls");
-    pokaz_elementy_pociagow(mp);
+    pokazElementyPociagow(mP);
 }

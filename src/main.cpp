@@ -3,214 +3,175 @@
 
 using namespace std;
 
-int nr_miejsca = -1;
-int nr_pociagu = -1;
-int nr_kursu = -1;
+int nrMiejsca = -1;
+int nrPociagu = -1;
+int nrKursu = -1;
 
 vector<Miejsce> myMiejsca;
 vector<Pociag> myPociagi;
 vector<Kurs> myKursy;
 
-int main(void)
-{
-    wczytaj_miejsce(myMiejsca);
-    wczytaj_pociagi(myPociagi);
-    wczytaj_kursy(myKursy);
-    pokaz_menu();
+int main(void) {
+    wczytajMiejsce(myMiejsca);
+    wczytajPociagi(myPociagi);
+    wczytajKursy(myKursy);
+    pokazMenu();
     return 0;
 }
 
-void pokaz_menu(void)
-{
+void pokazMenu(void) {
     int wybor = 0;
 
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl;
     cout << "MENU (wybierz odpowiednia opcje): \n\n1. ZAKUP BILETU\n2. MIEJSCA.\n3. POCIAGI.\n4. KURSY.\n5. PODSUMOWANIE.\n";
     cin >> wybor;
 
-    switch (wybor)
-    {
+    switch(wybor) {
     case 1:
         system("cls");
-        wybierz_miejsce();
+        wybierzMiejsce();
         break;
     case 2:
         system("cls");
-        pokaz_elementy_miejsc(myMiejsca);
+        pokazElementyMiejsc(myMiejsca);
         break;
     case 3:
         system("cls");
-        pokaz_elementy_pociagow(myPociagi);
+        pokazElementyPociagow(myPociagi);
         break;
     case 4:
         system("cls");
-        pokaz_elementy_kursow(myKursy);
+        pokazElementyKursow(myKursy);
         break;
     case 5:
         system("cls");
-        pokaz_podsumowanie();
+        pokazPodsumowanie();
         break;
     }
 }
 
-void obliczanie_czasu(void)
-{
-    double pred_pociagu = 0;
+void obliczanieCzasu(void) {
+    double predPociagu = 0;
     double odleglosc = 0;
     int godz = 0;
     int min = 0;
     int t = 0;
 
-    pred_pociagu = myPociagi[nr_pociagu - 1].get_predkosc();
-    odleglosc = myMiejsca[nr_miejsca - 1].get_odleglosc();
+    predPociagu = myPociagi[nrPociagu - 1].getPredkosc();
+    odleglosc = myMiejsca[nrMiejsca - 1].getOdleglosc();
 
-    myKursy[nr_kursu - 1].czas_podrozy = (odleglosc / pred_pociagu) * 3600;
-    t = myKursy[nr_kursu - 1].czas_podrozy;
+    myKursy[nrKursu - 1].czasPodrozy = (odleglosc / predPociagu) * 3600;
+    t = myKursy[nrKursu - 1].czasPodrozy;
 
     godz = t / 3600;
     t %= 3600;
     min = t / 60;
     t %= 60;
 
-    myKursy[nr_kursu - 1].czas_przyjazdu.godz = myKursy[nr_kursu - 1].czas_wyjazdu.godz + godz;
-    myKursy[nr_kursu - 1].czas_przyjazdu.min = myKursy[nr_kursu - 1].czas_wyjazdu.min + min;
+    myKursy[nrKursu - 1].czasPrzyjazdu.godz = myKursy[nrKursu - 1].czasWyjazdu.godz + godz;
+    myKursy[nrKursu - 1].czasPrzyjazdu.min = myKursy[nrKursu - 1].czasWyjazdu.min + min;
 }
 
-void wybierz_miejsce(void)
-{
-    for (unsigned int i = 0; i < myMiejsca.size(); i++)
-    {
-        cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].get_nazwa();
-        cout << " Odleglosc: " << myMiejsca[i].get_odleglosc() << " km." << endl;
+void wybierzMiejsce(void) {
+    for(unsigned int i = 0; i < myMiejsca.size(); i++) {
+        cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].getNazwa();
+        cout << " Odleglosc: " << myMiejsca[i].getOdleglosc() << " km." << endl;
     }
 
     cout << "\nPodaj numer miejsca, ktory chcesz wybrac: ";
-    cin >> nr_miejsca;
+    cin >> nrMiejsca;
 
     system("cls");
-    wybierz_pociag();
+    wybierzPociag();
 }
 
-void wybierz_pociag(void)
-{
-    for (unsigned int i = 0; i < myPociagi.size(); i++)
-    {
-        cout << "Nr. " << i + 1 << " Nazwa: " << myPociagi[i].get_nazwa();
-        cout << " Predkosc: " << myPociagi[i].get_predkosc() << " km/h." << endl;
+void wybierzPociag(void) {
+    for(unsigned int i = 0; i < myPociagi.size(); i++) {
+        cout << "Nr. " << i + 1 << " Nazwa: " << myPociagi[i].getNazwa();
+        cout << " Predkosc: " << myPociagi[i].getPredkosc() << " km/h." << endl;
     }
 
     cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
-    cin >> nr_pociagu;
+    cin >> nrPociagu;
 
     system("cls");
-    wybierz_kurs();
+    wybierzKurs();
 }
 
-void wybierz_kurs(void)
-{
-    for (unsigned int i = 0; i < myKursy.size(); i++)
-    {
+void wybierzKurs(void) {
+    for(unsigned int i = 0; i < myKursy.size(); i++) {
         cout << "Nr. " << i + 1;
 
-        if (myKursy[i].get_czas_wyjazdu_godz() > 9 && myKursy[i].get_czas_wyjazdu_godz() < 24)
-        {
-            cout << " Czas wyjazdu: " << myKursy[i].get_czas_wyjazdu_godz();
-        }
-        else
-        {
-            cout << " Czas wyjazdu: 0" << myKursy[i].get_czas_wyjazdu_godz();
+        if(myKursy[i].getCzasWyjazduGodz() > 9 && myKursy[i].getCzasWyjazduGodz() < 24) {
+            cout << " Czas wyjazdu: " << myKursy[i].getCzasWyjazduGodz();
+        } else {
+            cout << " Czas wyjazdu: 0" << myKursy[i].getCzasWyjazduGodz();
         }
 
-        if (myKursy[i].get_czas_wyjazdu_min() > 9 && myKursy[i].get_czas_wyjazdu_min() < 59)
-        {
-            cout << ":" << myKursy[i].get_czas_wyjazdu_min() << "." << endl;
-        }
-        else
-        {
-            cout << ":0" << myKursy[i].get_czas_wyjazdu_min() << "." << endl;
+        if(myKursy[i].getCzasWyjazduMin() > 9 && myKursy[i].getCzasWyjazduMin() < 59) {
+            cout << ":" << myKursy[i].getCzasWyjazduMin() << "." << endl;
+        } else {
+            cout << ":0" << myKursy[i].getCzasWyjazduMin() << "." << endl;
         }
     }
 
     cout << "\nPodaj numer kursu, ktory chcesz wybrac: ";
-    cin >> nr_kursu;
+    cin >> nrKursu;
 
     system("cls");
-    pokaz_podsumowanie();
+    pokazPodsumowanie();
 }
 
-void pokaz_podsumowanie(void)
-{
+void pokazPodsumowanie(void) {
     cout << "*** Wszystkie dane biletu: ***" << endl;
 
-    if (nr_miejsca != -1)
-    {
-        cout << "Miejscowosc: " << myMiejsca[nr_miejsca - 1].get_nazwa() << endl;
-    }
-    else
-    {
+    if(nrMiejsca != -1) {
+        cout << "Miejscowosc: " << myMiejsca[nrMiejsca - 1].getNazwa() << endl;
+    } else {
         cout << "Miejscowosc: Brak." << endl;
     }
 
-    if (nr_pociagu != -1)
-    {
-        cout << "Pociag: " << myPociagi[nr_pociagu - 1].get_nazwa() << endl;
-    }
-    else
-    {
+    if(nrPociagu != -1) {
+        cout << "Pociag: " << myPociagi[nrPociagu - 1].getNazwa() << endl;
+    } else {
         cout << "Pociag: Brak." << endl;
     }
 
-    if (nr_kursu != -1)
-    {
-        obliczanie_czasu();
-        cout << "Nr. kursu: " << nr_kursu << endl;
+    if(nrKursu != -1) {
+        obliczanieCzasu();
+        cout << "Nr. kursu: " << nrKursu << endl;
 
-        if (myKursy[nr_kursu - 1].get_czas_wyjazdu_godz() > 9 && myKursy[nr_kursu - 1].get_czas_wyjazdu_godz() < 24)
-        {
-            cout << "Czas wyjazdu pociagu: " << myKursy[nr_kursu - 1].get_czas_wyjazdu_godz();
-        }
-        else
-        {
-            cout << "Czas wyjazdu pociagu: 0" << myKursy[nr_kursu - 1].get_czas_wyjazdu_godz();
+        if(myKursy[nrKursu - 1].getCzasWyjazduGodz() > 9 && myKursy[nrKursu - 1].getCzasWyjazduGodz() < 24) {
+            cout << "Czas wyjazdu pociagu: " << myKursy[nrKursu - 1].getCzasWyjazduGodz();
+        } else {
+            cout << "Czas wyjazdu pociagu: 0" << myKursy[nrKursu - 1].getCzasWyjazduGodz();
         }
 
-        if (myKursy[nr_kursu - 1].get_czas_wyjazdu_min() > 9 && myKursy[nr_kursu - 1].get_czas_wyjazdu_min() < 60)
-        {
-            cout << ":" << myKursy[nr_kursu - 1].get_czas_wyjazdu_min() << endl;
-        }
-        else
-        {
-            cout << ":0" << myKursy[nr_kursu - 1].get_czas_wyjazdu_min() << endl;
+        if(myKursy[nrKursu - 1].getCzasWyjazduMin() > 9 && myKursy[nrKursu - 1].getCzasWyjazduMin() < 60) {
+            cout << ":" << myKursy[nrKursu - 1].getCzasWyjazduMin() << endl;
+        } else {
+            cout << ":0" << myKursy[nrKursu - 1].getCzasWyjazduMin() << endl;
         }
 
-        if (myKursy[nr_kursu - 1].czas_przyjazdu.godz > 9 && myKursy[nr_kursu - 1].czas_przyjazdu.godz < 24)
-        {
-            cout << "Czas przyjazdu pociagu: " << myKursy[nr_kursu - 1].czas_przyjazdu.godz;
-        }
-        else
-        {
-            cout << "Czas przyjazdu pociagu: 0" << myKursy[nr_kursu - 1].czas_przyjazdu.godz;
+        if(myKursy[nrKursu - 1].czasPrzyjazdu.godz > 9 && myKursy[nrKursu - 1].czasPrzyjazdu.godz < 24) {
+            cout << "Czas przyjazdu pociagu: " << myKursy[nrKursu - 1].czasPrzyjazdu.godz;
+        } else {
+            cout << "Czas przyjazdu pociagu: 0" << myKursy[nrKursu - 1].czasPrzyjazdu.godz;
         }
 
-        if (myKursy[nr_kursu - 1].czas_przyjazdu.min > 9 && myKursy[nr_kursu - 1].czas_przyjazdu.min < 60)
-        {
-            cout << ":" << myKursy[nr_kursu - 1].czas_przyjazdu.min << endl;
+        if(myKursy[nrKursu - 1].czasPrzyjazdu.min > 9 && myKursy[nrKursu - 1].czasPrzyjazdu.min < 60) {
+            cout << ":" << myKursy[nrKursu - 1].czasPrzyjazdu.min << endl;
+        } else {
+            cout << ":0" << myKursy[nrKursu - 1].czasPrzyjazdu.min << endl;
         }
-        else
-        {
-            cout << ":0" << myKursy[nr_kursu - 1].czas_przyjazdu.min << endl;
-        }
-    }
-    else
-    {
+    } else {
         cout << "Nr. kursu: Brak." << endl;
         cout << "Czas wyjazdu pociagu: Brak." << endl;
         cout << "Czas przyjazdu pociagu: Brak." << endl;
     }
 
-    if (getch())
-    {
+    if(getch()) {
         system("cls");
-        pokaz_menu();
+        pokazMenu();
     }
 }
