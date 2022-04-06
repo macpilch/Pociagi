@@ -11,7 +11,7 @@ vector<Miejsce> myMiejsca;
 vector<Pociag> myPociagi;
 vector<Kurs> myKursy;
 
-int main(void) {
+int main(int argc, char *argv[]) {
     wczytajMiejsce(myMiejsca);
     wczytajPociagi(myPociagi);
     wczytajKursy(myKursy);
@@ -68,8 +68,16 @@ void obliczanieCzasu(void) {
     min = t / 60;
     t %= 60;
 
-    myKursy[nrKursu - 1].czasPrzyjazdu.godz = myKursy[nrKursu - 1].czasWyjazdu.godz + godz;
-    myKursy[nrKursu - 1].czasPrzyjazdu.min = myKursy[nrKursu - 1].czasWyjazdu.min + min;
+    cout << "Kurs wyniesie: " << godz << " H i " << min << " M." << endl;
+
+    if((min + myKursy[nrKursu - 1].czasWyjazdu.min) > 60) {
+        godz++;
+        myKursy[nrKursu - 1].czasPrzyjazdu.godz = myKursy[nrKursu - 1].czasWyjazdu.godz + godz;
+        myKursy[nrKursu - 1].czasPrzyjazdu.min = (myKursy[nrKursu - 1].czasWyjazdu.min + min) - 60;
+    } else {
+        myKursy[nrKursu - 1].czasPrzyjazdu.godz = myKursy[nrKursu - 1].czasWyjazdu.godz + godz;
+        myKursy[nrKursu - 1].czasPrzyjazdu.min = myKursy[nrKursu - 1].czasWyjazdu.min + min;
+    }
 }
 
 void wybierzMiejsce(void) {
@@ -169,6 +177,8 @@ void pokazPodsumowanie(void) {
         cout << "Czas wyjazdu pociagu: Brak." << endl;
         cout << "Czas przyjazdu pociagu: Brak." << endl;
     }
+
+    cout << "\nNacisnij dowolny przycisk aby powrocic do glownego menu.";
 
     if(getch()) {
         system("cls");
