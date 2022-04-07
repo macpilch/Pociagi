@@ -91,6 +91,8 @@ void wczytajKursy(vector<Kurs> &mK) {
 }
 
 void pokazKursy(vector<Kurs> &mK) {
+    cout << "Dostepne kursy: " << endl;
+    
     for(unsigned int i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
 

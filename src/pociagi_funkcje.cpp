@@ -90,6 +90,8 @@ void wczytajPociagi(vector<Pociag> &mP) {
 }
 
 void pokazPociagi(vector<Pociag> &mP) {
+    cout << "Dostepne pociagi: " << endl;
+    
     for(unsigned int i = 0; i < mP.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << mP[i].getNazwa();
         cout << " Predkosc: " << mP[i].getPredkosc() << " km/h." << endl;

@@ -90,6 +90,8 @@ void wczytajMiejsce(vector<Miejsce> &mM) {
 }
 
 void pokazMiejsca(vector<Miejsce> &mM) {
+    cout << "Dostepne miejsca: " << endl;
+    
     for(unsigned int i = 0; i < mM.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << mM[i].getNazwa();
         cout << " Odleglosc: " << mM[i].getOdleglosc() << " km." << endl;

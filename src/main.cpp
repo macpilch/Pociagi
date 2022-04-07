@@ -3,15 +3,15 @@
 
 using namespace std;
 
-int nrMiejsca = -1;
-int nrPociagu = -1;
-int nrKursu = -1;
-
 vector<Miejsce> myMiejsca;
 vector<Pociag> myPociagi;
 vector<Kurs> myKursy;
 
-int main(int argc, char *argv[]) {
+int nrMiejsca = -1;
+int nrPociagu = -1;
+int nrKursu = -1;
+
+int main(void) {
     wczytajMiejsce(myMiejsca);
     wczytajPociagi(myPociagi);
     wczytajKursy(myKursy);
@@ -68,7 +68,7 @@ void obliczanieCzasu(void) {
     min = t / 60;
     t %= 60;
 
-    cout << "Kurs wyniesie: " << godz << " H i " << min << " M." << endl;
+    cout << "Kurs wyniesie: " << godz << " Godz. i " << min << " Min." << endl;
 
     if((min + myKursy[nrKursu - 1].czasWyjazdu.min) > 60) {
         godz++;
@@ -81,6 +81,8 @@ void obliczanieCzasu(void) {
 }
 
 void wybierzMiejsce(void) {
+    cout << "Dostepne miejsca: " << endl;
+    
     for(unsigned int i = 0; i < myMiejsca.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].getNazwa();
         cout << " Odleglosc: " << myMiejsca[i].getOdleglosc() << " km." << endl;
@@ -89,11 +91,18 @@ void wybierzMiejsce(void) {
     cout << "\nPodaj numer miejsca, ktory chcesz wybrac: ";
     cin >> nrMiejsca;
 
-    system("cls");
-    wybierzPociag();
+    if((unsigned int)nrMiejsca > myMiejsca.size()) {
+        system("cls");
+        wybierzMiejsce();
+    } else {
+        system("cls");
+        wybierzPociag();
+    }
 }
 
 void wybierzPociag(void) {
+    cout << "Dostepne pociagi: " << endl;
+    
     for(unsigned int i = 0; i < myPociagi.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << myPociagi[i].getNazwa();
         cout << " Predkosc: " << myPociagi[i].getPredkosc() << " km/h." << endl;
@@ -102,11 +111,18 @@ void wybierzPociag(void) {
     cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
     cin >> nrPociagu;
 
-    system("cls");
-    wybierzKurs();
+    if((unsigned int)nrPociagu > myPociagi.size()) {
+        system("cls");
+        wybierzPociag();
+    } else {
+        system("cls");
+        wybierzKurs();
+    }
 }
 
 void wybierzKurs(void) {
+    cout << "Dostepne kursy: " << endl;
+
     for(unsigned int i = 0; i < myKursy.size(); i++) {
         cout << "Nr. " << i + 1;
 
@@ -126,8 +142,13 @@ void wybierzKurs(void) {
     cout << "\nPodaj numer kursu, ktory chcesz wybrac: ";
     cin >> nrKursu;
 
-    system("cls");
-    pokazPodsumowanie();
+    if((unsigned int)nrKursu > myKursy.size()) {
+        system("cls");
+        wybierzKurs();
+    } else {
+        system("cls");
+        pokazPodsumowanie();
+    }
 }
 
 void pokazPodsumowanie(void) {
@@ -146,8 +167,8 @@ void pokazPodsumowanie(void) {
     }
 
     if(nrKursu != -1) {
-        obliczanieCzasu();
         cout << "Nr. kursu: " << nrKursu << endl;
+        obliczanieCzasu();
 
         if(myKursy[nrKursu - 1].getCzasWyjazduGodz() > 9 && myKursy[nrKursu - 1].getCzasWyjazduGodz() < 24) {
             cout << "Czas wyjazdu pociagu: " << myKursy[nrKursu - 1].getCzasWyjazduGodz();
