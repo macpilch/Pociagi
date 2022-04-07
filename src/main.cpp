@@ -1,6 +1,9 @@
 #include <iostream>
 #include "../inc/funkcje.h"
 
+#define GODZ_W_SEK 3600
+#define GODZ_W_MIN 60
+
 using namespace std;
 
 vector<Miejsce> myMiejsca;
@@ -62,20 +65,20 @@ void obliczanieCzasu(void) {
     predPociagu = myPociagi[nrPociagu - 1].getPredkosc();
     odleglosc = myMiejsca[nrMiejsca - 1].getOdleglosc();
 
-    myKursy[nrKursu - 1].czasPodrozy = (odleglosc / predPociagu) * 3600;
+    myKursy[nrKursu - 1].czasPodrozy = (odleglosc / predPociagu) * GODZ_W_SEK;
     t = myKursy[nrKursu - 1].czasPodrozy;
 
-    godz = t / 3600;
-    t %= 3600;
-    min = t / 60;
-    t %= 60;
+    godz = t / GODZ_W_SEK;
+    t %= GODZ_W_SEK;
+    min = t / GODZ_W_MIN;
+    t %= GODZ_W_MIN;
 
     cout << "Kurs wyniesie: " << godz << " Godz. i " << min << " Min." << endl;
 
-    if((min + myKursy[nrKursu - 1].czasWyjazdu.min) > 60) {
+    if((min + myKursy[nrKursu - 1].czasWyjazdu.min) > GODZ_W_MIN) {
         godz++;
         myKursy[nrKursu - 1].czasPrzyjazdu.godz = myKursy[nrKursu - 1].czasWyjazdu.godz + godz;
-        myKursy[nrKursu - 1].czasPrzyjazdu.min = (myKursy[nrKursu - 1].czasWyjazdu.min + min) - 60;
+        myKursy[nrKursu - 1].czasPrzyjazdu.min = (myKursy[nrKursu - 1].czasWyjazdu.min + min) - GODZ_W_MIN;
     } else {
         myKursy[nrKursu - 1].czasPrzyjazdu.godz = myKursy[nrKursu - 1].czasWyjazdu.godz + godz;
         myKursy[nrKursu - 1].czasPrzyjazdu.min = myKursy[nrKursu - 1].czasWyjazdu.min + min;
