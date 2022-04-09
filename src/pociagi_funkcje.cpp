@@ -1,6 +1,8 @@
 #include <iostream>
 #include "../inc/funkcje.h"
 
+#define MAX_POCIAGOW 15
+
 using namespace std;
 
 void pokazElementyPociagow(vector<Pociag> &mP) {
@@ -40,7 +42,7 @@ void zapiszPociagi(vector<Pociag> &mP) {
     plikBazaPociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaPociagi.is_open()) {
-        cout << "Plik otwarto!" << endl;
+        cout << "Plik otwarto!\n\n";
 
         plikBazaPociagi << wielkosc << endl;
 
@@ -97,6 +99,8 @@ void pokazPociagi(vector<Pociag> &mP) {
         cout << " Predkosc: " << mP[i].getPredkosc() << " km/h." << endl;
     }
 
+    cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";
+
     if(getch()) {
         system("cls");
         pokazElementyPociagow(mP);
@@ -108,13 +112,19 @@ void dodajPociag(vector<Pociag> &mP) {
     double predkosc = 0;
     int ilosc = 0;
 
-    cout << "Podaj nazwe pociagu ktora chcesz dodac: \n";
+    if(mP.size() == MAX_POCIAGOW) {
+        system("cls");
+        cout << "Osiagnieto limit pociagow (15)!\n\n";
+        pokazElementyPociagow(mP);
+    }
+
+    cout << "Podaj nazwe pociagu ktora chcesz dodac (Wolnych miejsc: " << (MAX_POCIAGOW - mP.size()) << "): \n";
     cin >> nazwa;
 
     for(unsigned int i = 0; i < mP.size(); i++) {
         if(nazwa == mP[i].getNazwa()) {
             system("cls");
-            cout << "Taka nazwa juz istnieje!\n\n";
+            cout << "Taki pociag juz istnieje!\n\n";
             pokazElementyPociagow(mP);
         }
     }
@@ -137,11 +147,12 @@ void usunPociag(vector<Pociag> &mP) {
     cin >> id;
 
     if(id > mP.size()) {
-        cout << "Taki pociag nie istnieje!" << endl;
+        system("cls");
+        cout << "Taki pociag nie istnieje!\n\n";
+        pokazElementyPociagow(mP);
     } else {
         mP.erase(mP.begin() + id);
+        system("cls");
+        pokazElementyPociagow(mP);
     }
-
-    system("cls");
-    pokazElementyPociagow(mP);
 }

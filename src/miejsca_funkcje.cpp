@@ -1,6 +1,8 @@
 #include <iostream>
 #include "../inc/funkcje.h"
 
+#define MAX_MIEJSC 20
+
 using namespace std;
 
 void pokazElementyMiejsc(vector<Miejsce> &mM) {
@@ -40,7 +42,7 @@ void zapiszMiejsce(vector<Miejsce> &mM) {
     plikBazaMiejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaMiejsc.is_open()) {
-        cout << "Plik otwarto!" << endl;
+        cout << "Plik otwarto!\n\n";
 
         plikBazaMiejsc << wielkosc << endl;
 
@@ -97,6 +99,8 @@ void pokazMiejsca(vector<Miejsce> &mM) {
         cout << " Odleglosc: " << mM[i].getOdleglosc() << " km." << endl;
     }
 
+    cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";
+
     if(getch()) {
         system("cls");
         pokazElementyMiejsc(mM);
@@ -108,13 +112,19 @@ void dodajMiejsce(vector<Miejsce> &mM) {
     double odlg = 0;
     int ilosc = 0;
 
-    cout << "Podaj nazwe miejscowosci ktora chcesz dodac: \n";
+    if(mM.size() == MAX_MIEJSC) {
+        system("cls");
+        cout << "Osiagnieto limit miejsc (20)!\n\n";
+        pokazElementyMiejsc(mM);
+    }
+
+    cout << "Podaj nazwe miejscowosci ktora chcesz dodac (Wolnych miejsc: " << (MAX_MIEJSC - mM.size()) << "): \n";
     cin >> nazwa;
 
     for(unsigned int i = 0; i < mM.size(); i++) {
         if(nazwa == mM[i].getNazwa()) {
             system("cls");
-            cout << "Taka nazwa juz istnieje!\n\n";
+            cout << "Taka miejscowosc juz istnieje!\n\n";
             pokazElementyMiejsc(mM);
         }
     }
@@ -137,11 +147,12 @@ void usunMiejsce(vector<Miejsce> &mM) {
     cin >> id;
 
     if(id > mM.size()) {
-        cout << "Takie miejsce nie istnieje!" << endl;
+        system("cls");
+        cout << "Takie miejsce nie istnieje!\n\n";
+        pokazElementyMiejsc(mM);
     } else {
         mM.erase(mM.begin() + id);
+        system("cls");
+        pokazElementyMiejsc(mM);
     }
-
-    system("cls");
-    pokazElementyMiejsc(mM);
 }

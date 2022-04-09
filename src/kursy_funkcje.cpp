@@ -2,6 +2,8 @@
 #include "../inc/kursy.h"
 #include "../inc/funkcje.h"
 
+#define MAX_KURSOW 10
+
 using namespace std;
 
 void pokazElementyKursow(vector<Kurs> &mK) {
@@ -41,7 +43,7 @@ void zapiszKursy(vector<Kurs> &mK) {
     plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaKursow.is_open()) {
-        cout << "Plik otwarto!" << endl;
+        cout << "Plik otwarto!\n\n";
 
         plikBazaKursow << wielkosc << endl;
 
@@ -109,6 +111,8 @@ void pokazKursy(vector<Kurs> &mK) {
         }
     }
 
+    cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";
+
     if(getch()) {
         system("cls");
         pokazElementyKursow(mK);
@@ -120,11 +124,25 @@ void dodajKurs(vector<Kurs> &mK) {
     int minuty = 0;
     int ilosc = 0;
 
-    cout << "Podaj godzine o ktorej zacznie sie kurs: \n";
+    if(mK.size() == MAX_KURSOW) {
+        system("cls");
+        cout << "Osiagnieto limit kursow (10)!\n\n";
+        pokazElementyKursow(mK);
+    }
+
+    cout << "Podaj godzine o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): \n";
     cin >> godzina;
 
-    cout << "Podaj liczbe minut o ktorej zacznie sie kurs: \n";
+    cout << "Podaj liczbe minut o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): \n";
     cin >> minuty;
+
+    for(unsigned int i = 0; i < mK.size(); i++) {
+        if(godzina == mK[i].getCzasWyjazduGodz() && minuty == mK[i].getCzasWyjazduMin()) {
+            system("cls");
+            cout << "Taki kurs juz istnieje!\n\n";
+            pokazElementyKursow(mK);
+        }
+    }
 
     mK.push_back(Kurs());
     ilosc = mK.size();
@@ -141,11 +159,12 @@ void usunKurs(vector<Kurs> &mK) {
     cin >> id;
 
     if(id > mK.size()) {
+        system("cls");
         cout << "Taki kurs nie istnieje!" << endl;
+        pokazElementyKursow(mK);
     } else {
         mK.erase(mK.begin() + id);
+        system("cls");
+        pokazElementyKursow(mK);
     }
-
-    system("cls");
-    pokazElementyKursow(mK);
 }
