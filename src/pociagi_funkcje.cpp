@@ -51,7 +51,7 @@ void zapiszPociagi(vector<Pociag> &mP) {
             plikBazaPociagi << mP[i].getPredkosc() << endl;
         }
     } else {
-        cout << "Brak pliku z baza danych pociagow!" << endl;
+        cout << "Brak pliku z baza danych pociagow!\n\n";
     }
 
     plikBazaPociagi.close();
@@ -67,12 +67,12 @@ void wczytajPociagi(vector<Pociag> &mP) {
     plikBazaPociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in);
 
     if(plikBazaPociagi.is_open()) {
-        cout << "Plik otwarto!" << endl;
+        cout << "Plik otwarto!\n";
 
         plikBazaPociagi >> wielkosc;
 
         if(!wielkosc) {
-            cout << "Baza danych pociagow pusta!" << endl;
+            cout << "Baza danych pociagow pusta!\n";
         } else {
             mP.clear();
 
@@ -85,18 +85,18 @@ void wczytajPociagi(vector<Pociag> &mP) {
             }
         }
     } else {
-        cout << "Brak pliku z baza danych pociagow!" << endl;
+        cout << "Brak pliku z baza danych pociagow!\n";
     }
 
     plikBazaPociagi.close();
 }
 
 void pokazPociagi(vector<Pociag> &mP) {
-    cout << "Dostepne pociagi: " << endl;
+    cout << "Dostepne pociagi: \n";
     
     for(unsigned int i = 0; i < mP.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << mP[i].getNazwa();
-        cout << " Predkosc: " << mP[i].getPredkosc() << " km/h." << endl;
+        cout << " Predkosc: " << mP[i].getPredkosc() << " km/h.\n";
     }
 
     cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";

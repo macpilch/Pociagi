@@ -51,7 +51,7 @@ void zapiszMiejsce(vector<Miejsce> &mM) {
             plikBazaMiejsc << mM[i].getOdleglosc() << endl;
         }
     } else {
-        cout << "Brak pliku z baza danych miejsc!" << endl;
+        cout << "Brak pliku z baza danych miejsc!\n\n";
     }
 
     plikBazaMiejsc.close();
@@ -67,12 +67,12 @@ void wczytajMiejsce(vector<Miejsce> &mM) {
     plikBazaMiejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in);
 
     if(plikBazaMiejsc.is_open()) {
-        cout << "Plik otwarto!" << endl;
+        cout << "Plik otwarto!\n";
 
         plikBazaMiejsc >> wielkosc;
 
         if(!wielkosc) {
-            cout << "Baza danych miejsc pusta!";
+            cout << "Baza danych miejsc pusta!\n";
         } else {
             mM.clear();
 
@@ -85,18 +85,18 @@ void wczytajMiejsce(vector<Miejsce> &mM) {
             }
         }
     } else {
-        cout << "Brak pliku z baza danych miejsc!" << endl;
+        cout << "Brak pliku z baza danych miejsc!\n";
     }
 
     plikBazaMiejsc.close();
 }
 
 void pokazMiejsca(vector<Miejsce> &mM) {
-    cout << "Dostepne miejsca: " << endl;
+    cout << "Dostepne miejsca: \n";
     
     for(unsigned int i = 0; i < mM.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << mM[i].getNazwa();
-        cout << " Odleglosc: " << mM[i].getOdleglosc() << " km." << endl;
+        cout << " Odleglosc: " << mM[i].getOdleglosc() << " km.\n";
     }
 
     cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";

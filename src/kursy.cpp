@@ -11,7 +11,7 @@ Kurs::Kurs() {
     czasPrzyjazdu.godz = 0;
     czasPrzyjazdu.min = 0;
 
-    cout << "Poprawnie stworzono konstruktor (Kursy)!" << endl;
+    cout << "Poprawnie stworzono konstruktor (Kursy)!\n";
 }
 
 Kurs::Kurs(int godz, int min) : Kurs() {

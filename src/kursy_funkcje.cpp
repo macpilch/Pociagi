@@ -52,7 +52,7 @@ void zapiszKursy(vector<Kurs> &mK) {
             plikBazaKursow << mK[i].getCzasWyjazduMin() << endl;
         }
     } else {
-        cout << "Brak pliku z baza danych kursow!" << endl;
+        cout << "Brak pliku z baza danych kursow!\n\n";
     }
 
     plikBazaKursow.close();
@@ -68,12 +68,12 @@ void wczytajKursy(vector<Kurs> &mK) {
     plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in);
 
     if(plikBazaKursow.is_open()) {
-        cout << "Plik otwarto!" << endl;
+        cout << "Plik otwarto!\n";
 
         plikBazaKursow >> wielkosc;
 
         if(!wielkosc) {
-            cout << "Baza danych jest pusta!" << endl;
+            cout << "Baza danych jest pusta!\n";
         } else {
             mK.clear();
 
@@ -86,14 +86,14 @@ void wczytajKursy(vector<Kurs> &mK) {
             }
         }
     } else {
-        cout << "Brak pliku z baza danych kursow!" << endl;
+        cout << "Brak pliku z baza danych kursow!\n";
     }
 
     plikBazaKursow.close();
 }
 
 void pokazKursy(vector<Kurs> &mK) {
-    cout << "Dostepne kursy: " << endl;
+    cout << "Dostepne kursy: \n";
     
     for(unsigned int i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
@@ -105,9 +105,9 @@ void pokazKursy(vector<Kurs> &mK) {
         }
 
         if(mK[i].getCzasWyjazduMin() > 9 && mK[i].getCzasWyjazduMin() < 59) {
-            cout << ":" << mK[i].getCzasWyjazduMin() << "." << endl;
+            cout << ":" << mK[i].getCzasWyjazduMin() << ".\n";
         } else {
-            cout << ":0" << mK[i].getCzasWyjazduMin() << "." << endl;
+            cout << ":0" << mK[i].getCzasWyjazduMin() << ".\n";
         }
     }
 
@@ -160,7 +160,7 @@ void usunKurs(vector<Kurs> &mK) {
 
     if(id > mK.size()) {
         system("cls");
-        cout << "Taki kurs nie istnieje!" << endl;
+        cout << "Taki kurs nie istnieje!\n";
         pokazElementyKursow(mK);
     } else {
         mK.erase(mK.begin() + id);
