@@ -14,9 +14,6 @@ public:
 
     Kurs();
     Kurs(int, int);
-
-    int getCzasWyjazduGodz(void);
-    int getCzasWyjazduMin(void);
     void setKurs(int, int);
 };
 

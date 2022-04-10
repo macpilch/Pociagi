@@ -48,8 +48,8 @@ void zapiszKursy(vector<Kurs> &mK) {
         plikBazaKursow << wielkosc << endl;
 
         for(int i = 0; i < wielkosc; i++) {
-            plikBazaKursow << mK[i].getCzasWyjazduGodz() << endl;
-            plikBazaKursow << mK[i].getCzasWyjazduMin() << endl;
+            plikBazaKursow << mK[i].czasWyjazdu.godz << endl;
+            plikBazaKursow << mK[i].czasWyjazdu.min << endl;
         }
     } else {
         cout << "Brak pliku z baza danych kursow!\n\n";
@@ -98,16 +98,16 @@ void pokazKursy(vector<Kurs> &mK) {
     for(unsigned int i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
 
-        if(mK[i].getCzasWyjazduGodz() > 9 && mK[i].getCzasWyjazduGodz() < 24) {
-            cout << " Czas wyjazdu: " << mK[i].getCzasWyjazduGodz();
+        if(mK[i].czasWyjazdu.godz > 9 && mK[i].czasWyjazdu.godz < 24) {
+            cout << " Czas wyjazdu: " << mK[i].czasWyjazdu.godz;
         } else {
-            cout << " Czas wyjazdu: 0" << mK[i].getCzasWyjazduGodz();
+            cout << " Czas wyjazdu: 0" << mK[i].czasWyjazdu.godz;
         }
 
-        if(mK[i].getCzasWyjazduMin() > 9 && mK[i].getCzasWyjazduMin() < 59) {
-            cout << ":" << mK[i].getCzasWyjazduMin() << ".\n";
+        if(mK[i].czasWyjazdu.min > 9 && mK[i].czasWyjazdu.min < 59) {
+            cout << ":" << mK[i].czasWyjazdu.min << ".\n";
         } else {
-            cout << ":0" << mK[i].getCzasWyjazduMin() << ".\n";
+            cout << ":0" << mK[i].czasWyjazdu.min << ".\n";
         }
     }
 
@@ -137,7 +137,7 @@ void dodajKurs(vector<Kurs> &mK) {
     cin >> minuty;
 
     for(unsigned int i = 0; i < mK.size(); i++) {
-        if(godzina == mK[i].getCzasWyjazduGodz() && minuty == mK[i].getCzasWyjazduMin()) {
+        if(godzina == mK[i].czasWyjazdu.godz && minuty == mK[i].czasWyjazdu.min) {
             system("cls");
             cout << "Taki kurs juz istnieje!\n\n";
             pokazElementyKursow(mK);

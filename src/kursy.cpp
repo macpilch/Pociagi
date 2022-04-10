@@ -19,14 +19,6 @@ Kurs::Kurs(int godz, int min) : Kurs() {
     this->czasWyjazdu.min = min;
 }
 
-int Kurs::getCzasWyjazduGodz(void) {
-    return this->czasWyjazdu.godz;
-}
-
-int Kurs::getCzasWyjazduMin(void) {
-    return this->czasWyjazdu.min;
-}
-
 void Kurs::setKurs(int godz, int min) {
     this->czasWyjazdu.godz = godz;
     this->czasWyjazdu.min = min;
