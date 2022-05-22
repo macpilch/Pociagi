@@ -18,7 +18,7 @@ int posiadanaGotowka = 100;
 int rodzajBiletu = 1;
 
 int main(int argc, char *argv[]) {
-    cout << "Argv: " << argv[1] << endl;
+    //cout << "Argv: " << argv[1] << endl;
     
     wczytajMiejsce(myMiejsca);
     wczytajPociagi(myPociagi);
@@ -37,7 +37,7 @@ void pokazMenu(void) {
     switch(wybor) {
     case 1:
         system("cls");
-        wybierzMiejsce();
+        wybierzBilet();
         break;
     case 2:
         system("cls");
@@ -88,10 +88,28 @@ void obliczanieCzasu(void) {
     }
 }
 
+void wybierzBilet(void) {
+    cout << "Posiadana przez ciebie gotowka: " << posiadanaGotowka << endl;
+    cout << "\nPodaj numer biletu ktory chcesz kupic (1. Normalny - 20 zl, 2. Ulgowy - 15 zl):\n";
+    cin >> rodzajBiletu;
+
+    switch(rodzajBiletu) {
+    case 1:
+        posiadanaGotowka -= 20;
+        break;
+    case 2:
+        posiadanaGotowka -= 15;
+        break;
+    }
+
+    system("cls");
+    wybierzMiejsce();
+}
+
 void wybierzMiejsce(void) {
     cout << "Dostepne miejsca: \n";
     
-    for(unsigned int i = 0; i < myMiejsca.size(); i++) {
+    for(uInt i = 0; i < myMiejsca.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].getNazwa();
         cout << " Odleglosc: " << myMiejsca[i].getOdleglosc() << " km.\n";
     }
@@ -99,7 +117,7 @@ void wybierzMiejsce(void) {
     cout << "\nPodaj numer miejsca, ktory chcesz wybrac: ";
     cin >> nrMiejsca;
 
-    if((unsigned int)nrMiejsca > myMiejsca.size()) {
+    if((uInt)nrMiejsca > myMiejsca.size()) {
         system("cls");
         wybierzMiejsce();
     } else {
@@ -111,7 +129,7 @@ void wybierzMiejsce(void) {
 void wybierzPociag(void) {
     cout << "Dostepne pociagi: \n";
     
-    for(unsigned int i = 0; i < myPociagi.size(); i++) {
+    for(uInt i = 0; i < myPociagi.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << myPociagi[i].getNazwa();
         cout << " Predkosc: " << myPociagi[i].getPredkosc() << " km/h.\n";
     }
@@ -119,7 +137,7 @@ void wybierzPociag(void) {
     cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
     cin >> nrPociagu;
 
-    if((unsigned int)nrPociagu > myPociagi.size()) {
+    if((uInt)nrPociagu > myPociagi.size()) {
         system("cls");
         wybierzPociag();
     } else {
@@ -131,7 +149,7 @@ void wybierzPociag(void) {
 void wybierzKurs(void) {
     cout << "Dostepne kursy: \n";
 
-    for(unsigned int i = 0; i < myKursy.size(); i++) {
+    for(uInt i = 0; i < myKursy.size(); i++) {
         cout << "Nr. " << i + 1;
 
         if(myKursy[i].czasWyjazdu.godz > 9 && myKursy[i].czasWyjazdu.godz < 24) {
@@ -150,7 +168,7 @@ void wybierzKurs(void) {
     cout << "\nPodaj numer kursu, ktory chcesz wybrac: ";
     cin >> nrKursu;
 
-    if((unsigned int)nrKursu > myKursy.size()) {
+    if((uInt)nrKursu > myKursy.size()) {
         system("cls");
         wybierzKurs();
     } else {

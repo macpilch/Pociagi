@@ -11,6 +11,8 @@
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"
 
+typedef unsigned int uInt;
+
 void pokazElementyMiejsc(vector<Miejsce> &mM);
 void zapiszMiejsce(vector<Miejsce> &mM);
 void wczytajMiejsce(vector<Miejsce> &mM);
@@ -37,6 +39,7 @@ void usunKurs(vector<Kurs> &mK);
 
 void pokazMenu(void);
 void obliczanieCzasu(void);
+void wybierzBilet(void);
 void pokazPodsumowanie(void);
 
 #endif

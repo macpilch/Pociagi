@@ -43,7 +43,7 @@ void zapiszKursy(vector<Kurs> &mK) {
     plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaKursow.is_open()) {
-        cout << "Plik otwarto!\n\n";
+        cout << "Plik otwarto!\nDane zostaly pomyslnie zapisane.\n\n";
 
         plikBazaKursow << wielkosc << endl;
 
@@ -95,7 +95,7 @@ void wczytajKursy(vector<Kurs> &mK) {
 void pokazKursy(vector<Kurs> &mK) {
     cout << "Dostepne kursy: \n";
     
-    for(unsigned int i = 0; i < mK.size(); i++) {
+    for(uInt i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
 
         if(mK[i].czasWyjazdu.godz > 9 && mK[i].czasWyjazdu.godz < 24) {
@@ -136,7 +136,7 @@ void dodajKurs(vector<Kurs> &mK) {
     cout << "Podaj liczbe minut o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): \n";
     cin >> minuty;
 
-    for(unsigned int i = 0; i < mK.size(); i++) {
+    for(uInt i = 0; i < mK.size(); i++) {
         if(godzina == mK[i].czasWyjazdu.godz && minuty == mK[i].czasWyjazdu.min) {
             system("cls");
             cout << "Taki kurs juz istnieje!\n\n";
@@ -153,7 +153,7 @@ void dodajKurs(vector<Kurs> &mK) {
 }
 
 void usunKurs(vector<Kurs> &mK) {
-    unsigned int id = 0;
+    uInt id = 0;
 
     cout << "Podaj ID kursu, ktory chcesz usunac: \n";
     cin >> id;

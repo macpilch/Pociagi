@@ -42,7 +42,7 @@ void zapiszMiejsce(vector<Miejsce> &mM) {
     plikBazaMiejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaMiejsc.is_open()) {
-        cout << "Plik otwarto!\n\n";
+        cout << "Plik otwarto!\nDane zostaly pomyslnie zapisane.\n\n";
 
         plikBazaMiejsc << wielkosc << endl;
 
@@ -94,7 +94,7 @@ void wczytajMiejsce(vector<Miejsce> &mM) {
 void pokazMiejsca(vector<Miejsce> &mM) {
     cout << "Dostepne miejsca: \n";
     
-    for(unsigned int i = 0; i < mM.size(); i++) {
+    for(uInt i = 0; i < mM.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << mM[i].getNazwa();
         cout << " Odleglosc: " << mM[i].getOdleglosc() << " km.\n";
     }
@@ -121,7 +121,7 @@ void dodajMiejsce(vector<Miejsce> &mM) {
     cout << "Podaj nazwe miejscowosci ktora chcesz dodac (Wolnych miejsc: " << (MAX_MIEJSC - mM.size()) << "): \n";
     cin >> nazwa;
 
-    for(unsigned int i = 0; i < mM.size(); i++) {
+    for(uInt i = 0; i < mM.size(); i++) {
         if(nazwa == mM[i].getNazwa()) {
             system("cls");
             cout << "Taka miejscowosc juz istnieje!\n\n";
@@ -141,7 +141,7 @@ void dodajMiejsce(vector<Miejsce> &mM) {
 }
 
 void usunMiejsce(vector<Miejsce> &mM) {
-    unsigned int id = 0;
+    uInt id = 0;
 
     cout << "Podaj ID miejsca, ktore chcesz usunac: \n";
     cin >> id;

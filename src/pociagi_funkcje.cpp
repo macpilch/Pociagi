@@ -42,7 +42,7 @@ void zapiszPociagi(vector<Pociag> &mP) {
     plikBazaPociagi.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/pociagi", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaPociagi.is_open()) {
-        cout << "Plik otwarto!\n\n";
+        cout << "Plik otwarto!\nDane zostaly pomyslnie zapisane.\n\n";
 
         plikBazaPociagi << wielkosc << endl;
 
@@ -94,7 +94,7 @@ void wczytajPociagi(vector<Pociag> &mP) {
 void pokazPociagi(vector<Pociag> &mP) {
     cout << "Dostepne pociagi: \n";
     
-    for(unsigned int i = 0; i < mP.size(); i++) {
+    for(uInt i = 0; i < mP.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << mP[i].getNazwa();
         cout << " Predkosc: " << mP[i].getPredkosc() << " km/h.\n";
     }
@@ -121,7 +121,7 @@ void dodajPociag(vector<Pociag> &mP) {
     cout << "Podaj nazwe pociagu ktora chcesz dodac (Wolnych miejsc: " << (MAX_POCIAGOW - mP.size()) << "): \n";
     cin >> nazwa;
 
-    for(unsigned int i = 0; i < mP.size(); i++) {
+    for(uInt i = 0; i < mP.size(); i++) {
         if(nazwa == mP[i].getNazwa()) {
             system("cls");
             cout << "Taki pociag juz istnieje!\n\n";
@@ -141,7 +141,7 @@ void dodajPociag(vector<Pociag> &mP) {
 }
 
 void usunPociag(vector<Pociag> &mP) {
-    unsigned int id = 0;
+    uInt id = 0;
 
     cout << "Podaj ID pociagu, ktore chcesz usunac: \n";
     cin >> id;
