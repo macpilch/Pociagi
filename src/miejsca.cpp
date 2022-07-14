@@ -7,6 +7,10 @@ Miejsce::Miejsce() {
     cout << "Poprawnie stworzono konstruktor (Miejsca)!\n";
 }
 
+Miejsce::~Miejsce() {
+    
+}
+
 void Miejsce::setMiejsce(string n, double odl) {
     this->nazwa = n;
     this->odleglosc = odl;

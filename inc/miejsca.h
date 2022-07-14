@@ -12,6 +12,7 @@ private:
 
 public:
     Miejsce();
+    ~Miejsce();
     void setMiejsce(string, double);
     string getNazwa(void);
     double getOdleglosc(void);

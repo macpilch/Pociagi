@@ -1,7 +1,6 @@
 #ifndef __FUNKCJE_H__
 #define __FUNKCJE_H__
 
-#include <string.h>
 #include <vector>
 #include <windows.h>
 #include <fstream>

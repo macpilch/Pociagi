@@ -13,6 +13,10 @@ Kurs::Kurs() {
     cout << "Poprawnie stworzono konstruktor (Kursy)!\n";
 }
 
+Kurs::~Kurs() {
+    
+}
+
 Kurs::Kurs(int godz, int min) : Kurs() {
     this->czasWyjazdu.godz = godz;
     this->czasWyjazdu.min = min;

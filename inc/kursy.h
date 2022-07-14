@@ -13,6 +13,7 @@ public:
     Godzina czasPrzyjazdu;
 
     Kurs();
+    ~Kurs();
     Kurs(int, int);
     void setKurs(int, int);
 };

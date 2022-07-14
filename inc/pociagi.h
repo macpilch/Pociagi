@@ -12,6 +12,7 @@ private:
 
 public:
     Pociag();
+    ~Pociag();
     void setPociag(string, double);
     string getNazwa(void);
     double getPredkosc(void);
