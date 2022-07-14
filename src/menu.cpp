@@ -7,12 +7,10 @@ extern vector<Miejsce> myMiejsca;
 extern vector<Pociag> myPociagi;
 extern vector<Kurs> myKursy;
 
-int nrMiejsca[4];
-int nrPociagu[4];
-int nrKursu[4];
+int nrMiejsca[MAX_BILETOW];
+int nrPociagu[MAX_BILETOW];
+int nrKursu[MAX_BILETOW];
 
-int posiadanaGotowka = 100;
-int rodzajBiletu = 1;
 int iloscBiletow;
 
 void pokazMenu(void) {
@@ -24,7 +22,7 @@ void pokazMenu(void) {
 
     switch(wybor) {
     case 1:
-        if(iloscBiletow != -1) {
+        if(iloscBiletow != (MAX_BILETOW + 1)) {
             system("cls");
             wybierzBilet();
         } else {
@@ -89,6 +87,9 @@ void obliczanieCzasu(void) {
 }
 
 void wybierzBilet(void) {
+    static int posiadanaGotowka = 100;
+    int rodzajBiletu = 1;
+    
     cout << "Posiadana przez ciebie gotowka: " << posiadanaGotowka << endl;
     cout << "To twoj " << iloscBiletow + 1 << " bilet." << endl;
     cout << "Podaj numer biletu ktory chcesz kupic (1. Normalny - 20 zl, 2. Ulgowy - 15 zl):" << endl;
@@ -108,7 +109,7 @@ void wybierzBilet(void) {
     if(iloscBiletow == (MAX_BILETOW + 1)) {
         system("cls");
         cout << "Nie mozna kupic wiecej niz 4 bilety!\n\n";
-        iloscBiletow = -1;
+        iloscBiletow = MAX_BILETOW + 1;
         pokazMenu();
     } else {
         system("cls");
@@ -196,7 +197,7 @@ void pokazPodsumowanie(void) {
         cout << "Czas wyjazdu pociagu: Brak.\n";
         cout << "Czas przyjazdu pociagu: Brak.\n";
     } else {
-        cout << "*** Wszystkie dane " << iloscBiletow << " biletu: ***\n";
+        cout << "*** Wszystkie dane " << (iloscBiletow != (MAX_BILETOW + 1) ? iloscBiletow : iloscBiletow - 1) << " biletu: ***\n";
         cout << "Miejscowosc: " << myMiejsca[nrMiejsca[iloscBiletow - 1] - 1].getNazwa() << ".\n";
         cout << "Pociag: " << myPociagi[nrPociagu[iloscBiletow - 1] - 1].getNazwa() << ".\n";
         cout << "Nr. kursu: " << nrKursu[iloscBiletow - 1] << ".\n";
