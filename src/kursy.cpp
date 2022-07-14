@@ -1,5 +1,4 @@
 #include <iostream>
-#include "../inc/funkcje.h"
 #include "../inc/kursy.h"
 
 using namespace std;

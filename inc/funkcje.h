@@ -7,6 +7,8 @@
 #include <fstream>
 #include <conio.h>
 
+#include "../inc/makra.h"
+#include "../inc/menu.h"
 #include "../inc/miejsca.h"
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"

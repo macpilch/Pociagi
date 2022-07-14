@@ -1,8 +1,6 @@
 #include <iostream>
 #include "../inc/funkcje.h"
 
-#define MAX_MIEJSC 20
-
 using namespace std;
 
 void pokazElementyMiejsc(vector<Miejsce> &mM) {

@@ -2,8 +2,6 @@
 #include "../inc/kursy.h"
 #include "../inc/funkcje.h"
 
-#define MAX_KURSOW 10
-
 using namespace std;
 
 void pokazElementyKursow(vector<Kurs> &mK) {

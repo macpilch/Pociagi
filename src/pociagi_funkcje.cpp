@@ -1,8 +1,6 @@
 #include <iostream>
 #include "../inc/funkcje.h"
 
-#define MAX_POCIAGOW 15
-
 using namespace std;
 
 void pokazElementyPociagow(vector<Pociag> &mP) {
