@@ -91,7 +91,7 @@ void wybierzBilet(void) {
     int rodzajBiletu = 1;
     
     cout << "Posiadana przez ciebie gotowka: " << posiadanaGotowka << endl;
-    cout << "To twoj " << ++iloscBiletow << " bilet." << endl;
+    cout << "To twoj " << ++iloscBiletow << " bilet." << endl; // preinkrementacja
     cout << "Podaj numer biletu ktory chcesz kupic (1. Normalny - 20 zl, 2. Ulgowy - 15 zl):" << endl;
     cin >> rodzajBiletu;
 
