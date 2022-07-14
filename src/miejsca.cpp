@@ -8,7 +8,7 @@ Miejsce::Miejsce() {
 }
 
 Miejsce::~Miejsce() {
-    
+    cout << "Poprawnie zniszczono konstruktor (Miejsca)!\n";
 }
 
 void Miejsce::setMiejsce(string n, double odl) {

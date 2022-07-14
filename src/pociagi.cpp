@@ -8,7 +8,7 @@ Pociag::Pociag() {
 }
 
 Pociag::~Pociag() {
-    
+    cout << "Poprawnie zniszczono konstruktor (Pociagi)!\n";
 }
 
 void Pociag::setPociag(string n, double p) {

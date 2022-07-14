@@ -14,7 +14,7 @@ Kurs::Kurs() {
 }
 
 Kurs::~Kurs() {
-    
+    cout << "Poprawnie zniszczono konstruktor (Kursy)!\n";
 }
 
 Kurs::Kurs(int godz, int min) : Kurs() {
