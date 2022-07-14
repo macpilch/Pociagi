@@ -1,5 +1,5 @@
-#ifndef _FUNKCJE_
-#define _FUNKCJE_
+#ifndef __FUNKCJE_H__
+#define __FUNKCJE_H__
 
 #include <string.h>
 #include <vector>

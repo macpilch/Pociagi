@@ -1,5 +1,5 @@
-#ifndef _POCIAGI_
-#define _POCIAGI_
+#ifndef __POCIAGI_H__
+#define __POCIAGI_H__
 
 #include <iostream>
 

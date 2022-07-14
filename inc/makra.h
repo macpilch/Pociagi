@@ -1,5 +1,5 @@
-#ifndef _MAKRA_
-#define _MAKRA_
+#ifndef __MAKRA_H__
+#define __MAKRA_H__
 
 #define MAX_KURSOW 10
 #define MAX_MIEJSC 20

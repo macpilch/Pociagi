@@ -1,5 +1,5 @@
-#ifndef _KURSY_
-#define _KURSY_
+#ifndef __KURSY_H__
+#define __KURSY_H__
 
 struct Godzina {
     int min;

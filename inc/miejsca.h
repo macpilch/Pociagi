@@ -1,5 +1,5 @@
-#ifndef _MIEJSCA_
-#define _MIEJSCA_
+#ifndef __MIEJSCA_H__
+#define __MIEJSCA_H__
 
 #include <iostream>
 

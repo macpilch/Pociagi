@@ -1,5 +1,5 @@
-#ifndef _MENU_
-#define _MENU_
+#ifndef __MENU_H__
+#define __MENU_H__
 
 void pokazMenu(void);
 void obliczanieCzasu(void);
