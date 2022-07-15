@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: pociagi.h
+    Data: 20.01.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #ifndef __POCIAGI_H__
 #define __POCIAGI_H__
 

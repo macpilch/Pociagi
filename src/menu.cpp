@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: menu.cpp
+    Data: 14.07.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #include <iostream>
 #include "../inc/funkcje.h"
 
@@ -46,6 +54,10 @@ void pokazMenu(void) {
     case 5:
         system("cls");
         pokazPodsumowanie();
+        break;
+    default:
+        system("cls");
+        pokazMenu();
         break;
     }
 

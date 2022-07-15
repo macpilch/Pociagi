@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: miejsca.cpp
+    Data: 20.01.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #include <iostream>
 #include "../inc/miejsca.h"
 

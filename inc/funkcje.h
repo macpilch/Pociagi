@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: funkcje.h
+    Data: 09.03.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #ifndef __FUNKCJE_H__
 #define __FUNKCJE_H__
 

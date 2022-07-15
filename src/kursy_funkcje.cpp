@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: kursy_funkcje.cpp
+    Data: 09.03.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #include <iostream>
 #include "../inc/kursy.h"
 #include "../inc/funkcje.h"
@@ -30,6 +38,10 @@ void pokazElementyKursow(vector<Kurs> &mK) {
     case 5:
         system("cls");
         pokazMenu();
+        break;
+    default:
+        system("cls");
+        pokazElementyKursow(mK);
         break;
     }
 }

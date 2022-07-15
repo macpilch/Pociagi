@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: makra.h
+    Data: 14.07.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #ifndef __MAKRA_H__
 #define __MAKRA_H__
 

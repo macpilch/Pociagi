@@ -1,3 +1,11 @@
+/*
+    Projekt: Pociagi
+    Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
+    Plik: pociagi_funkcje.cpp
+    Data: 09.03.2022
+    Modyfikacja: 15.07.2022
+*/
+
 #include <iostream>
 #include "../inc/funkcje.h"
 
@@ -29,6 +37,10 @@ void pokazElementyPociagow(vector<Pociag> &mP) {
     case 5:
         system("cls");
         pokazMenu();
+        break;
+    default:
+        system("cls");
+        pokazElementyPociagow(mP);
         break;
     }
 }
