@@ -11,9 +11,9 @@
 
 using namespace std;
 
-extern vector<Miejsce> myMiejsca;
-extern vector<Pociag> myPociagi;
-extern vector<Kurs> myKursy;
+extern vecM myMiejsca;
+extern vecP myPociagi;
+extern vecK myKursy;
 
 int nrMiejsca[MAX_BILETOW];
 int nrPociagu[MAX_BILETOW];
