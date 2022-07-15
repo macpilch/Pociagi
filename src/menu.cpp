@@ -103,7 +103,7 @@ void wybierzBilet(void) {
     int rodzajBiletu = 1;
     
     cout << "Posiadana przez ciebie gotowka: " << posiadanaGotowka << endl;
-    cout << "To twoj " << ++iloscBiletow << " bilet." << endl; // preinkrementacja
+    cout << "To twoj " << iloscBiletow + 1 << " bilet." << endl;
     cout << "Podaj numer biletu ktory chcesz kupic (1. Normalny - 20 zl, 2. Ulgowy - 15 zl):" << endl;
     cin >> rodzajBiletu;
 
@@ -114,7 +114,15 @@ void wybierzBilet(void) {
     case 2:
         posiadanaGotowka -= 15;
         break;
+    default:
+        system("cls");
+        wybierzBilet();
+
+        iloscBiletow = 0;
+        break;
     }
+
+    iloscBiletow++;
 
     if(iloscBiletow == (MAX_BILETOW + 1)) {
         system("cls");
@@ -138,7 +146,7 @@ void wybierzMiejsce(void) {
     cout << "\nPodaj numer miejsca, ktory chcesz wybrac: ";
     cin >> nrMiejsca[iloscBiletow - 1];
 
-    if((uInt)nrMiejsca[iloscBiletow - 1] > myMiejsca.size()) {
+    if((uInt)nrMiejsca[iloscBiletow - 1] > myMiejsca.size() || (uInt)nrMiejsca[iloscBiletow - 1] <= 0) {
         system("cls");
         wybierzMiejsce();
     } else {
@@ -158,7 +166,7 @@ void wybierzPociag(void) {
     cout << "\nPodaj numer pociagu, ktory chcesz wybrac: ";
     cin >> nrPociagu[iloscBiletow - 1];
 
-    if((uInt)nrPociagu[iloscBiletow - 1] > myPociagi.size()) {
+    if((uInt)nrPociagu[iloscBiletow - 1] > myPociagi.size() || (uInt)nrPociagu[iloscBiletow - 1] <= 0) {
         system("cls");
         wybierzPociag();
     } else {
@@ -189,7 +197,7 @@ void wybierzKurs(void) {
     cout << "\nPodaj numer kursu, ktory chcesz wybrac: ";
     cin >> nrKursu[iloscBiletow - 1];
 
-    if((uInt)nrKursu[iloscBiletow - 1] > myKursy.size()) {
+    if((uInt)nrKursu[iloscBiletow - 1] > myKursy.size() || (uInt)nrKursu[iloscBiletow - 1] <= 0) {
         system("cls");
         wybierzKurs();
     } else {
