@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void pokazElementyMiejsc(vector<Miejsce> &mM) {
+void pokazElementyMiejsc(vecM &mM) {
     int wybor = 0;
 
     cout << "MENU MIEJSC (wybierz odpowiednia opcje):\n\n1. Pokaz miejsca do wybrania.\n2. Dodaj nowe miejsce.\n3. Usun miejsce.\n4. Zapis miejsc do pliku.\n5. Powrot do menu.\n";
@@ -45,7 +45,7 @@ void pokazElementyMiejsc(vector<Miejsce> &mM) {
     }
 }
 
-void zapiszMiejsce(vector<Miejsce> &mM) {
+void zapiszMiejsce(vecM &mM) {
     fstream plikBazaMiejsc;
     int wielkosc = mM.size();
 
@@ -68,7 +68,7 @@ void zapiszMiejsce(vector<Miejsce> &mM) {
     pokazElementyMiejsc(mM);
 }
 
-void wczytajMiejsce(vector<Miejsce> &mM) {
+void wczytajMiejsce(vecM &mM) {
     fstream plikBazaMiejsc;
     string tmpNazwa;
     double tmpOdlg = 0;
@@ -101,7 +101,7 @@ void wczytajMiejsce(vector<Miejsce> &mM) {
     plikBazaMiejsc.close();
 }
 
-void pokazMiejsca(vector<Miejsce> &mM) {
+void pokazMiejsca(vecM &mM) {
     cout << "Dostepne miejsca: \n";
     
     for(uInt i = 0; i < mM.size(); i++) {
@@ -117,7 +117,7 @@ void pokazMiejsca(vector<Miejsce> &mM) {
     }
 }
 
-void dodajMiejsce(vector<Miejsce> &mM) {
+void dodajMiejsce(vecM &mM) {
     string nazwa;
     double odlg = 0;
     int ilosc = 0;
@@ -150,7 +150,7 @@ void dodajMiejsce(vector<Miejsce> &mM) {
     pokazElementyMiejsc(mM);
 }
 
-void usunMiejsce(vector<Miejsce> &mM) {
+void usunMiejsce(vecM &mM) {
     uInt id = 0;
 
     cout << "Podaj ID miejsca, ktore chcesz usunac: \n";

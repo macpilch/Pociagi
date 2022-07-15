@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void pokazElementyKursow(vector<Kurs> &mK) {
+void pokazElementyKursow(vecK &mK) {
     int wybor = 0;
 
     cout << "MENU KURSOW (wybierz odpowiednia opcje):\n\n1. Pokaz kursy do wybrania.\n2. Dodaj nowy kurs.\n3. Usun kurs.\n4. Zapis kursow do pliku.\n5. Powrot do menu.\n";
@@ -46,7 +46,7 @@ void pokazElementyKursow(vector<Kurs> &mK) {
     }
 }
 
-void zapiszKursy(vector<Kurs> &mK) {
+void zapiszKursy(vecK &mK) {
     fstream plikBazaKursow;
     int wielkosc = mK.size();
 
@@ -69,7 +69,7 @@ void zapiszKursy(vector<Kurs> &mK) {
     pokazElementyKursow(mK);
 }
 
-void wczytajKursy(vector<Kurs> &mK) {
+void wczytajKursy(vecK &mK) {
     fstream plikBazaKursow;
     int tmpGodz = 0;
     int tmpMin = 0;
@@ -102,7 +102,7 @@ void wczytajKursy(vector<Kurs> &mK) {
     plikBazaKursow.close();
 }
 
-void pokazKursy(vector<Kurs> &mK) {
+void pokazKursy(vecK &mK) {
     cout << "Dostepne kursy: \n";
     
     for(uInt i = 0; i < mK.size(); i++) {
@@ -129,7 +129,7 @@ void pokazKursy(vector<Kurs> &mK) {
     }
 }
 
-void dodajKurs(vector<Kurs> &mK) {
+void dodajKurs(vecK &mK) {
     int godzina = 0;
     int minuty = 0;
     int ilosc = 0;
@@ -162,7 +162,7 @@ void dodajKurs(vector<Kurs> &mK) {
     pokazElementyKursow(mK);
 }
 
-void usunKurs(vector<Kurs> &mK) {
+void usunKurs(vecK &mK) {
     uInt id = 0;
 
     cout << "Podaj ID kursu, ktory chcesz usunac: \n";

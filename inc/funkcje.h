@@ -20,31 +20,34 @@
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"
 
+typedef vector<Miejsce> vecM;
+typedef vector<Pociag> vecP;
+typedef vector<Kurs> vecK;
 typedef unsigned int uInt;
 
-void pokazElementyMiejsc(vector<Miejsce> &mM);
-void zapiszMiejsce(vector<Miejsce> &mM);
-void wczytajMiejsce(vector<Miejsce> &mM);
-void pokazMiejsca(vector<Miejsce> &mM);
+void pokazElementyMiejsc(vecM &mM);
+void zapiszMiejsce(vecM &mM);
+void wczytajMiejsce(vecM &mM);
+void pokazMiejsca(vecM &mM);
 void wybierzMiejsce(void);
-void dodajMiejsce(vector<Miejsce> &mM);
-void usunMiejsce(vector<Miejsce> &mM);
+void dodajMiejsce(vecM &mM);
+void usunMiejsce(vecM &mM);
 
-void pokazElementyPociagow(vector<Pociag> &mP);
-void zapiszPociagi(vector<Pociag> &mP);
-void wczytajPociagi(vector<Pociag> &mP);
-void pokazPociagi(vector<Pociag> &mP);
+void pokazElementyPociagow(vecP &mP);
+void zapiszPociagi(vecP &mP);
+void wczytajPociagi(vecP &mP);
+void pokazPociagi(vecP &mP);
 void wybierzPociag(void);
-void dodajPociag(vector<Pociag> &mP);
-void usunPociag(vector<Pociag> &mP);
+void dodajPociag(vecP &mP);
+void usunPociag(vecP &mP);
 
-void pokazElementyKursow(vector<Kurs> &mK);
-void zapiszKursy(vector<Kurs> &mK);
-void wczytajKursy(vector<Kurs> &mK);
-void pokazKursy(vector<Kurs> &mK);
+void pokazElementyKursow(vecK &mK);
+void zapiszKursy(vecK &mK);
+void wczytajKursy(vecK &mK);
+void pokazKursy(vecK &mK);
 void wybierzKurs(void);
-void dodajKurs(vector<Kurs> &mK);
-void usunKurs(vector<Kurs> &mK);
+void dodajKurs(vecK &mK);
+void usunKurs(vecK &mK);
 
 void pokazMenu(void);
 void obliczanieCzasu(void);

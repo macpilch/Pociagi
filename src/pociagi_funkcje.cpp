@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void pokazElementyPociagow(vector<Pociag> &mP) {
+void pokazElementyPociagow(vecP &mP) {
     int wybor = 0;
 
     cout << "MENU POCIAGOW (wybierz odpowiednia opcje):\n\n1. Pokaz pociagi do wybrania.\n2. Dodaj nowy pociag.\n3. Usun pociag.\n4. Zapis pociagow do pliku.\n5. Powrot do menu.\n";
@@ -45,7 +45,7 @@ void pokazElementyPociagow(vector<Pociag> &mP) {
     }
 }
 
-void zapiszPociagi(vector<Pociag> &mP) {
+void zapiszPociagi(vecP &mP) {
     fstream plikBazaPociagi;
     int wielkosc = mP.size();
 
@@ -68,7 +68,7 @@ void zapiszPociagi(vector<Pociag> &mP) {
     pokazElementyPociagow(mP);
 }
 
-void wczytajPociagi(vector<Pociag> &mP) {
+void wczytajPociagi(vecP &mP) {
     fstream plikBazaPociagi;
     string tmpNazwa;
     double tmpPred = 0;
@@ -101,7 +101,7 @@ void wczytajPociagi(vector<Pociag> &mP) {
     plikBazaPociagi.close();
 }
 
-void pokazPociagi(vector<Pociag> &mP) {
+void pokazPociagi(vecP &mP) {
     cout << "Dostepne pociagi: \n";
     
     for(uInt i = 0; i < mP.size(); i++) {
@@ -117,7 +117,7 @@ void pokazPociagi(vector<Pociag> &mP) {
     }
 }
 
-void dodajPociag(vector<Pociag> &mP) {
+void dodajPociag(vecP &mP) {
     string nazwa;
     double predkosc = 0;
     int ilosc = 0;
@@ -150,7 +150,7 @@ void dodajPociag(vector<Pociag> &mP) {
     pokazElementyPociagow(mP);
 }
 
-void usunPociag(vector<Pociag> &mP) {
+void usunPociag(vecP &mP) {
     uInt id = 0;
 
     cout << "Podaj ID pociagu, ktore chcesz usunac: \n";

@@ -14,9 +14,9 @@
 
 using namespace std;
 
-vector<Miejsce> myMiejsca;
-vector<Pociag> myPociagi;
-vector<Kurs> myKursy;
+vecM myMiejsca;
+vecP myPociagi;
+vecK myKursy;
 
 int main(int argc, char **argv) {
     cout << "Argc: " << argc << endl;
