@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: makra.h
     Data: 14.07.2022
-    Modyfikacja: 15.07.2022
+    Modyfikacja: 16.07.2022
 */
 
 #ifndef __MAKRA_H__
@@ -20,5 +20,8 @@
 #define K_ESC 27
 #define K_STRZ_L 75
 #define K_STRZ_P 77
+
+#define MIN_ROZ_STR 0
+#define MAX_ROZ_STR 1
 
 #endif

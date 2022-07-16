@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: menu.cpp
     Data: 14.07.2022
-    Modyfikacja: 15.07.2022
+    Modyfikacja: 16.07.2022
 */
 
 #include <iostream>
@@ -103,6 +103,16 @@ void wybierzBilet(void) {
     static int posiadanaGotowka = 100;
     int rodzajBiletu = 1;
     
+    if((iloscBiletow + 1) == (MAX_BILETOW + 1)) {
+        system("cls");
+        cout << "Nie mozna kupic wiecej niz 4 bilety!\n\n";
+
+        iloscBiletow = MAX_BILETOW + 1;
+
+        pokazMenu();
+        return;
+    }
+
     cout << "Posiadana przez ciebie gotowka: " << posiadanaGotowka << endl;
     cout << "To twoj " << iloscBiletow + 1 << " bilet." << endl;
     cout << "Podaj numer biletu ktory chcesz kupic (1. Normalny - 20 zl, 2. Ulgowy - 15 zl):" << endl;
@@ -127,18 +137,8 @@ void wybierzBilet(void) {
     iloscBiletow++;
     nrBiletu = iloscBiletow;
 
-    if(iloscBiletow == (MAX_BILETOW + 1)) {
-        system("cls");
-        cout << "Nie mozna kupic wiecej niz 4 bilety!\n\n";
-
-        iloscBiletow = MAX_BILETOW + 1;
-        nrBiletu = 0;
-
-        pokazMenu();
-    } else {
-        system("cls");
-        wybierzMiejsce();
-    }
+    system("cls");
+    wybierzMiejsce();
 }
 
 void wybierzMiejsce(void) {
@@ -213,7 +213,7 @@ void wybierzKurs(void) {
 }
 
 void pokazPodsumowanie(void) {
-    static int nrStrony = 1;
+    static int nrStrony = MAX_ROZ_STR;
     
     if(!iloscBiletow) {
         cout << "Brak biletu!\n\n";
@@ -253,9 +253,9 @@ void pokazPodsumowanie(void) {
         }
 
         if(myKursy[nrKursu[nrBiletu - nrStrony] - 1].czasPrzyjazdu.godz > 9 && myKursy[nrKursu[nrBiletu - nrStrony] - 1].czasPrzyjazdu.godz < 24) {
-            cout << "Czas przyjazdu pociagu: " << myKursy[nrKursu[nrBiletu - 1] - 1].czasPrzyjazdu.godz;
+            cout << "Czas przyjazdu pociagu: " << myKursy[nrKursu[nrBiletu - nrStrony] - 1].czasPrzyjazdu.godz;
         } else {
-            cout << "Czas przyjazdu pociagu: 0" << myKursy[nrKursu[nrBiletu - 1] - 1].czasPrzyjazdu.godz;
+            cout << "Czas przyjazdu pociagu: 0" << myKursy[nrKursu[nrBiletu - nrStrony] - 1].czasPrzyjazdu.godz;
         }
 
         if(myKursy[nrKursu[nrBiletu - nrStrony] - 1].czasPrzyjazdu.min > 9 && myKursy[nrKursu[nrBiletu - nrStrony] - 1].czasPrzyjazdu.min < 60) {
@@ -271,11 +271,19 @@ void pokazPodsumowanie(void) {
         case K_STRZ_L:
             nrStrony++;
 
+            if(nrStrony == (nrBiletu + MAX_ROZ_STR)) {
+                nrStrony--;
+            }
+
             system("cls");
             pokazPodsumowanie();
             break;
         case K_STRZ_P:
             nrStrony--;
+
+            if(nrStrony == MIN_ROZ_STR) {
+                nrStrony = MAX_ROZ_STR;
+            }
 
             system("cls");
             pokazPodsumowanie();
