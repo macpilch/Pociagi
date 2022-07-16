@@ -25,6 +25,11 @@ typedef vector<Pociag> vecP;
 typedef vector<Kurs> vecK;
 typedef unsigned int uInt;
 
+typedef struct Bilet {
+    int ilosc;
+    int nr;
+} bilet;
+
 void pokazElementyMiejsc(vecM &mM);
 void zapiszMiejsce(vecM &mM);
 void wczytajMiejsce(vecM &mM);
