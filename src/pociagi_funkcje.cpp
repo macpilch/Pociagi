@@ -109,11 +109,14 @@ void pokazPociagi(vecP &mP) {
         cout << " Predkosc: " << mP[i].getPredkosc() << " km/h.\n";
     }
 
-    cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";
+    cout << "\nNacisnij ESC aby powrocic do menu.";
 
-    if(getch()) {
+    if(getch() == K_ESC) {
         system("cls");
         pokazElementyPociagow(mP);
+    } else {
+        system("cls");
+        pokazPociagi(mP);
     }
 }
 

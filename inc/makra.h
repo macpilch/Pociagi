@@ -17,4 +17,8 @@
 #define GODZ_W_SEK 3600
 #define GODZ_W_MIN 60
 
+#define K_ESC 27
+#define K_STRZ_L 75
+#define K_STRZ_P 77
+
 #endif

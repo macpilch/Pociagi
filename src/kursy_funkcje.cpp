@@ -121,11 +121,14 @@ void pokazKursy(vecK &mK) {
         }
     }
 
-    cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";
+    cout << "\nNacisnij ESC aby powrocic do menu.";
 
-    if(getch()) {
+    if(getch() == K_ESC) {
         system("cls");
         pokazElementyKursow(mK);
+    } else {
+        system("cls");
+        pokazKursy(mK);
     }
 }
 

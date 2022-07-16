@@ -109,11 +109,14 @@ void pokazMiejsca(vecM &mM) {
         cout << " Odleglosc: " << mM[i].getOdleglosc() << " km.\n";
     }
 
-    cout << "\nNacisnij dowolny przycisk aby powrocic do menu.";
+    cout << "\nNacisnij ESC aby powrocic do menu.";
 
-    if(getch()) {
+    if(getch() == K_ESC) {
         system("cls");
         pokazElementyMiejsc(mM);
+    } else {
+        system("cls");
+        pokazMiejsca(mM);
     }
 }
 
