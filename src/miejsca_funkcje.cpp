@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: miejsca_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 15.07.2022
+    Modyfikacja: 19.07.2022
 */
 
 #include <iostream>
@@ -14,7 +14,7 @@ using namespace std;
 void pokazElementyMiejsc(vecM &mM) {
     int wybor = 0;
 
-    cout << "MENU MIEJSC (wybierz odpowiednia opcje):\n\n1. Pokaz miejsca do wybrania.\n2. Dodaj nowe miejsce.\n3. Usun miejsce.\n4. Zapis miejsc do pliku.\n5. Powrot do menu.\n";
+    cout << "MENU MIEJSC (wybierz odpowiednia opcje):" << endl << endl << "1. Pokaz miejsca do wybrania." << endl << "2. Dodaj nowe miejsce." << endl << "3. Usun miejsce." << endl << "4. Zapis miejsc do pliku." << endl << "5. Powrot do menu." << endl;
     cin >> wybor;
 
     switch(wybor) {
@@ -52,7 +52,7 @@ void zapiszMiejsce(vecM &mM) {
     plikBazaMiejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaMiejsc.is_open()) {
-        cout << "Plik otwarto!\nDane zostaly pomyslnie zapisane.\n\n";
+        cout << "Plik otwarto!" << endl << "Dane zostaly pomyslnie zapisane." << endl << endl;
 
         plikBazaMiejsc << wielkosc << endl;
 
@@ -61,7 +61,7 @@ void zapiszMiejsce(vecM &mM) {
             plikBazaMiejsc << mM[i].getOdleglosc() << endl;
         }
     } else {
-        cout << "Brak pliku z baza danych miejsc!\n\n";
+        cout << "Brak pliku z baza danych miejsc!" << endl << endl;
     }
 
     plikBazaMiejsc.close();
@@ -77,12 +77,12 @@ void wczytajMiejsce(vecM &mM) {
     plikBazaMiejsc.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/miejsca", fstream::out | fstream::in);
 
     if(plikBazaMiejsc.is_open()) {
-        cout << "Plik otwarto!\n";
+        cout << "Plik otwarto!" << endl;
 
         plikBazaMiejsc >> wielkosc;
 
         if(!wielkosc) {
-            cout << "Baza danych miejsc pusta!\n";
+            cout << "Baza danych miejsc pusta!" << endl;
         } else {
             mM.clear();
 
@@ -95,21 +95,21 @@ void wczytajMiejsce(vecM &mM) {
             }
         }
     } else {
-        cout << "Brak pliku z baza danych miejsc!\n";
+        cout << "Brak pliku z baza danych miejsc!" << endl;
     }
 
     plikBazaMiejsc.close();
 }
 
 void pokazMiejsca(vecM &mM) {
-    cout << "Dostepne miejsca: \n";
+    cout << "Dostepne miejsca: " << endl;
     
     for(uInt i = 0; i < mM.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << mM[i].getNazwa();
-        cout << " Odleglosc: " << mM[i].getOdleglosc() << " km.\n";
+        cout << " Odleglosc: " << mM[i].getOdleglosc() << " km." << endl;
     }
 
-    cout << "\nNacisnij ESC aby powrocic do menu.";
+    cout << endl << "Nacisnij ESC aby powrocic do menu.";
 
     if(getch() == K_ESC) {
         system("cls");
@@ -127,22 +127,22 @@ void dodajMiejsce(vecM &mM) {
 
     if(mM.size() == MAX_MIEJSC) {
         system("cls");
-        cout << "Osiagnieto limit miejsc (20)!\n\n";
+        cout << "Osiagnieto limit miejsc (20)!" << endl << endl;
         pokazElementyMiejsc(mM);
     }
 
-    cout << "Podaj nazwe miejscowosci ktora chcesz dodac (Wolnych miejsc: " << (MAX_MIEJSC - mM.size()) << "): \n";
+    cout << "Podaj nazwe miejscowosci ktora chcesz dodac (Wolnych miejsc: " << (MAX_MIEJSC - mM.size()) << "): " << endl;
     cin >> nazwa;
 
     for(uInt i = 0; i < mM.size(); i++) {
         if(nazwa == mM[i].getNazwa()) {
             system("cls");
-            cout << "Taka miejscowosc juz istnieje!\n\n";
+            cout << "Taka miejscowosc juz istnieje!" << endl << endl;
             pokazElementyMiejsc(mM);
         }
     }
 
-    cout << "Podaj odleglosc od tej miejscowosci: \n";
+    cout << "Podaj odleglosc od tej miejscowosci: " << endl;
     cin >> odlg;
 
     mM.push_back(Miejsce());
@@ -156,12 +156,12 @@ void dodajMiejsce(vecM &mM) {
 void usunMiejsce(vecM &mM) {
     uInt id = 0;
 
-    cout << "Podaj ID miejsca, ktore chcesz usunac: \n";
+    cout << "Podaj ID miejsca, ktore chcesz usunac: " << endl;
     cin >> id;
 
     if(id > mM.size()) {
         system("cls");
-        cout << "Takie miejsce nie istnieje!\n\n";
+        cout << "Takie miejsce nie istnieje!" << endl << endl;
         pokazElementyMiejsc(mM);
     } else {
         mM.erase(mM.begin() + id);

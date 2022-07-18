@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: funkcje.h
     Data: 09.03.2022
-    Modyfikacja: 15.07.2022
+    Modyfikacja: 19.07.2022
 */
 
 #ifndef __FUNKCJE_H__
@@ -25,7 +25,7 @@ typedef vector<Pociag> vecP;
 typedef vector<Kurs> vecK;
 typedef unsigned int uInt;
 
-typedef struct Bilet {
+typedef struct {
     int ilosc;
     int nr;
 } bilet;

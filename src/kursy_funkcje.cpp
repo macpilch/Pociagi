@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 15.07.2022
+    Modyfikacja: 19.07.2022
 */
 
 #include <iostream>
@@ -15,7 +15,7 @@ using namespace std;
 void pokazElementyKursow(vecK &mK) {
     int wybor = 0;
 
-    cout << "MENU KURSOW (wybierz odpowiednia opcje):\n\n1. Pokaz kursy do wybrania.\n2. Dodaj nowy kurs.\n3. Usun kurs.\n4. Zapis kursow do pliku.\n5. Powrot do menu.\n";
+    cout << "MENU KURSOW (wybierz odpowiednia opcje): " << endl << endl << "1. Pokaz kursy do wybrania." << endl << "2. Dodaj nowy kurs." << endl << "3. Usun kurs." << endl << "4. Zapis kursow do pliku." << endl << "5. Powrot do menu." << endl;
     cin >> wybor;
 
     switch(wybor) {
@@ -53,7 +53,7 @@ void zapiszKursy(vecK &mK) {
     plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in | ios::trunc);
 
     if(plikBazaKursow.is_open()) {
-        cout << "Plik otwarto!\nDane zostaly pomyslnie zapisane.\n\n";
+        cout << "Plik otwarto!" << endl << "Dane zostaly pomyslnie zapisane." << endl << endl;
 
         plikBazaKursow << wielkosc << endl;
 
@@ -62,7 +62,7 @@ void zapiszKursy(vecK &mK) {
             plikBazaKursow << mK[i].czasWyjazdu.min << endl;
         }
     } else {
-        cout << "Brak pliku z baza danych kursow!\n\n";
+        cout << "Brak pliku z baza danych kursow!" << endl << endl;
     }
 
     plikBazaKursow.close();
@@ -78,12 +78,12 @@ void wczytajKursy(vecK &mK) {
     plikBazaKursow.open("C:/Users/Maciek/Documents/Szkola/2TRA/PP/Pociagi/kursy", fstream::out | fstream::in);
 
     if(plikBazaKursow.is_open()) {
-        cout << "Plik otwarto!\n";
+        cout << "Plik otwarto!" << endl;
 
         plikBazaKursow >> wielkosc;
 
         if(!wielkosc) {
-            cout << "Baza danych jest pusta!\n";
+            cout << "Baza danych jest pusta!" << endl;
         } else {
             mK.clear();
 
@@ -96,14 +96,14 @@ void wczytajKursy(vecK &mK) {
             }
         }
     } else {
-        cout << "Brak pliku z baza danych kursow!\n";
+        cout << "Brak pliku z baza danych kursow!" << endl;
     }
 
     plikBazaKursow.close();
 }
 
 void pokazKursy(vecK &mK) {
-    cout << "Dostepne kursy: \n";
+    cout << "Dostepne kursy: " << endl;
     
     for(uInt i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
@@ -115,13 +115,13 @@ void pokazKursy(vecK &mK) {
         }
 
         if(mK[i].czasWyjazdu.min > 9 && mK[i].czasWyjazdu.min < 59) {
-            cout << ":" << mK[i].czasWyjazdu.min << ".\n";
+            cout << ":" << mK[i].czasWyjazdu.min << "." << endl;
         } else {
-            cout << ":0" << mK[i].czasWyjazdu.min << ".\n";
+            cout << ":0" << mK[i].czasWyjazdu.min << "." << endl;
         }
     }
 
-    cout << "\nNacisnij ESC aby powrocic do menu.";
+    cout << endl << "Nacisnij ESC aby powrocic do menu.";
 
     if(getch() == K_ESC) {
         system("cls");
@@ -139,20 +139,20 @@ void dodajKurs(vecK &mK) {
 
     if(mK.size() == MAX_KURSOW) {
         system("cls");
-        cout << "Osiagnieto limit kursow (10)!\n\n";
+        cout << "Osiagnieto limit kursow (10)!" << endl << endl;
         pokazElementyKursow(mK);
     }
 
-    cout << "Podaj godzine o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): \n";
+    cout << "Podaj godzine o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): " << endl;
     cin >> godzina;
 
-    cout << "Podaj liczbe minut o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): \n";
+    cout << "Podaj liczbe minut o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): " << endl;
     cin >> minuty;
 
     for(uInt i = 0; i < mK.size(); i++) {
         if(godzina == mK[i].czasWyjazdu.godz && minuty == mK[i].czasWyjazdu.min) {
             system("cls");
-            cout << "Taki kurs juz istnieje!\n\n";
+            cout << "Taki kurs juz istnieje!" << endl << endl;
             pokazElementyKursow(mK);
         }
     }
@@ -168,12 +168,12 @@ void dodajKurs(vecK &mK) {
 void usunKurs(vecK &mK) {
     uInt id = 0;
 
-    cout << "Podaj ID kursu, ktory chcesz usunac: \n";
+    cout << "Podaj ID kursu, ktory chcesz usunac: " << endl;
     cin >> id;
 
     if(id > mK.size()) {
         system("cls");
-        cout << "Taki kurs nie istnieje!\n";
+        cout << "Taki kurs nie istnieje!" << endl;
         pokazElementyKursow(mK);
     } else {
         mK.erase(mK.begin() + id);

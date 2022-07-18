@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: pociagi.cpp
     Data: 20.01.2022
-    Modyfikacja: 15.07.2022
+    Modyfikacja: 19.07.2022
 */
 
 #include <iostream>
@@ -12,11 +12,11 @@
 using namespace std;
 
 Pociag::Pociag() {
-    cout << "Poprawnie stworzono konstruktor (Pociagi)!\n";
+    cout << "Poprawnie stworzono konstruktor (Pociagi)!" << endl;
 }
 
 Pociag::~Pociag() {
-    cout << "Poprawnie zniszczono konstruktor (Pociagi)!\n";
+    cout << "Poprawnie zniszczono konstruktor (Pociagi)!" << endl;
 }
 
 void Pociag::setPociag(string n, double p) {
