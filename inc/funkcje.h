@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: funkcje.h
     Data: 09.03.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 21.07.2022
 */
 
 #ifndef __FUNKCJE_H__
@@ -28,6 +28,9 @@ typedef unsigned int uInt;
 typedef struct {
     int ilosc;
     int nr;
+    int nrMiejsca[MAX_BILETOW];
+    int nrPociagu[MAX_BILETOW];
+    int nrKursu[MAX_BILETOW];
 } bilet;
 
 void pokazElementyMiejsc(vecM &mM);

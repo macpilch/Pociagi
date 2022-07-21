@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy.h
     Data: 20.01.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 20.07.2022
 */
 
 #ifndef __KURSY_H__
@@ -19,6 +19,7 @@ public:
     double czasPodrozy;
     Godzina czasWyjazdu;
     Godzina czasPrzyjazdu;
+    bool dostepnosc;
 
     Kurs();
     ~Kurs();

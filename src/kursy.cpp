@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy.cpp
     Data: 20.01.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 20.07.2022
 */
 
 #include <iostream>
@@ -17,6 +17,7 @@ Kurs::Kurs() {
     czasWyjazdu.min = 0;
     czasPrzyjazdu.godz = 0;
     czasPrzyjazdu.min = 0;
+    dostepnosc = true;
 
     cout << "Poprawnie stworzono konstruktor (Kursy)!" << endl;
 }

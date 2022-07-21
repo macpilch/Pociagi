@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: pociagi_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 20.07.2022
 */
 
 #include <iostream>
@@ -91,7 +91,7 @@ void wczytajPociagi(vecP &mP) {
                 plikBazaPociagi >> tmpPred;
 
                 mP.push_back(Pociag());
-                mP[i].setPociag(tmpNazwa, tmpPred);
+                mP[i].setPociag(tmpNazwa, tmpPred, true);
             }
         }
     } else {
@@ -147,7 +147,7 @@ void dodajPociag(vecP &mP) {
 
     mP.push_back(Pociag());
     ilosc = mP.size();
-    mP[ilosc - 1].setPociag(nazwa, predkosc);
+    mP[ilosc - 1].setPociag(nazwa, predkosc, true);
 
     system("cls");
     pokazElementyPociagow(mP);

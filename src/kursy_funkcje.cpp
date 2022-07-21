@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 20.07.2022
 */
 
 #include <iostream>
@@ -160,6 +160,7 @@ void dodajKurs(vecK &mK) {
     mK.push_back(Kurs());
     ilosc = mK.size();
     mK[ilosc - 1].setKurs(godzina, minuty);
+    mK[ilosc - 1].dostepnosc = true;
 
     system("cls");
     pokazElementyKursow(mK);
