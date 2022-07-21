@@ -25,13 +25,13 @@ typedef vector<Pociag> vecP;
 typedef vector<Kurs> vecK;
 typedef unsigned int uInt;
 
-typedef struct {
+typedef struct bilet_s {
     int ilosc;
     int nr;
     int nrMiejsca[MAX_BILETOW];
     int nrPociagu[MAX_BILETOW];
     int nrKursu[MAX_BILETOW];
-} bilet;
+} bilet_t;
 
 void pokazElementyMiejsc(vecM &mM);
 void zapiszMiejsce(vecM &mM);

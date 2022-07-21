@@ -15,8 +15,8 @@ extern vecM myMiejsca;
 extern vecP myPociagi;
 extern vecK myKursy;
 
-bilet b;
-bilet *bWsk = &b;
+bilet_t b;
+bilet_t *bWsk = &b;
 
 void pokazMenu(void) {
     int wybor = 0;
