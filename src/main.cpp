@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: main.cpp
     Data: 13.01.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 21.07.2022
 */
 
 #define LICENCJA
@@ -26,6 +26,10 @@ int main(int argc, char **argv) {
     wczytajPociagi(myPociagi);
     wczytajKursy(myKursy);
     pokazMenu();
+
+    /*while(getch()) {
+        cout << "Klawisz: " << getch() << endl;
+    }*/
     return 0;
 }
 

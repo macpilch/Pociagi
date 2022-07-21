@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 20.07.2022
+    Modyfikacja: 21.07.2022
 */
 
 #include <iostream>
@@ -13,29 +13,26 @@
 using namespace std;
 
 void pokazElementyKursow(vecK &mK) {
-    int wybor = 0;
-
     cout << "MENU KURSOW (wybierz odpowiednia opcje): " << endl << endl << "1. Pokaz kursy do wybrania." << endl << "2. Dodaj nowy kurs." << endl << "3. Usun kurs." << endl << "4. Zapis kursow do pliku." << endl << "5. Powrot do menu." << endl;
-    cin >> wybor;
 
-    switch(wybor) {
-    case 1:
+    switch(getch()) {
+    case K_KLAW_1:
         system("cls");
         pokazKursy(mK);
         break;
-    case 2:
+    case K_KLAW_2:
         system("cls");
         dodajKurs(mK);
         break;
-    case 3:
+    case K_KLAW_3:
         system("cls");
         usunKurs(mK);
         break;
-    case 4:
+    case K_KLAW_4:
         system("cls");
         zapiszKursy(mK);
         break;
-    case 5:
+    case K_KLAW_5:
         system("cls");
         pokazMenu();
         break;

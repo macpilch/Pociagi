@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: pociagi_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 20.07.2022
+    Modyfikacja: 21.07.2022
 */
 
 #include <iostream>
@@ -12,29 +12,26 @@
 using namespace std;
 
 void pokazElementyPociagow(vecP &mP) {
-    int wybor = 0;
-
     cout << "MENU POCIAGOW (wybierz odpowiednia opcje):" << endl << endl << "1. Pokaz pociagi do wybrania." << endl << "2. Dodaj nowy pociag." << endl << "3. Usun pociag." << endl << "4. Zapis pociagow do pliku." << endl << "5. Powrot do menu." << endl;
-    cin >> wybor;
 
-    switch(wybor) {
-    case 1:
+    switch(getch()) {
+    case K_KLAW_1:
         system("cls");
         pokazPociagi(mP);
         break;
-    case 2:
+    case K_KLAW_2:
         system("cls");
         dodajPociag(mP);
         break;
-    case 3:
+    case K_KLAW_3:
         system("cls");
         usunPociag(mP);
         break;
-    case 4:
+    case K_KLAW_4:
         system("cls");
         zapiszPociagi(mP);
         break;
-    case 5:
+    case K_KLAW_5:
         system("cls");
         pokazMenu();
         break;

@@ -12,29 +12,26 @@
 using namespace std;
 
 void pokazElementyMiejsc(vecM &mM) {
-    int wybor = 0;
-
     cout << "MENU MIEJSC (wybierz odpowiednia opcje):" << endl << endl << "1. Pokaz miejsca do wybrania." << endl << "2. Dodaj nowe miejsce." << endl << "3. Usun miejsce." << endl << "4. Zapis miejsc do pliku." << endl << "5. Powrot do menu." << endl;
-    cin >> wybor;
 
-    switch(wybor) {
-    case 1:
+    switch(getch()) {
+    case K_KLAW_1:
         system("cls");
         pokazMiejsca(mM);
         break;
-    case 2:
+    case K_KLAW_2:
         system("cls");
         dodajMiejsce(mM);
         break;
-    case 3:
+    case K_KLAW_3:
         system("cls");
         usunMiejsce(mM);
         break;
-    case 4:
+    case K_KLAW_4:
         system("cls");
         zapiszMiejsce(mM);
         break;
-    case 5:
+    case K_KLAW_5:
         system("cls");
         pokazMenu();
         break;

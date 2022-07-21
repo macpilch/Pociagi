@@ -19,14 +19,11 @@ bilet_t b;
 bilet_t *bWsk = &b;
 
 void pokazMenu(void) {
-    int wybor = 0;
-
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl;
     cout << "MENU (wybierz odpowiednia opcje): " << endl << endl << "1. ZAKUP BILETU." << endl << "2. MIEJSCA." << endl << "3. POCIAGI." << endl << "4. KURSY." << endl << "5. PODSUMOWANIE." << endl;
-    cin >> wybor;
 
-    switch(wybor) {
-    case 1:
+    switch(getch()) {
+    case K_KLAW_1:
         if(bWsk->ilosc != (MAX_BILETOW + 1)) {
             system("cls");
             wybierzBilet();
@@ -36,19 +33,19 @@ void pokazMenu(void) {
             pokazMenu();
         }
         break;
-    case 2:
+    case K_KLAW_2:
         system("cls");
         pokazElementyMiejsc(myMiejsca);
         break;
-    case 3:
+    case K_KLAW_3:
         system("cls");
         pokazElementyPociagow(myPociagi);
         break;
-    case 4:
+    case K_KLAW_4:
         system("cls");
         pokazElementyKursow(myKursy);
         break;
-    case 5:
+    case K_KLAW_5:
         system("cls");
         pokazPodsumowanie();
         break;
