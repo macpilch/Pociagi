@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: funkcje.h
     Data: 09.03.2022
-    Modyfikacja: 21.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #ifndef __FUNKCJE_H__
@@ -20,10 +20,10 @@
 #include "../inc/pociagi.h"
 #include "../inc/kursy.h"
 
-typedef vector<Miejsce> vecM;
-typedef vector<Pociag> vecP;
-typedef vector<Kurs> vecK;
-typedef unsigned int uInt;
+typedef vector<Miejsce> VECM;
+typedef vector<Pociag> VECP;
+typedef vector<Kurs> VECK;
+typedef unsigned int UINT;
 
 typedef struct bilet_s {
     int ilosc;
@@ -33,29 +33,29 @@ typedef struct bilet_s {
     int nrKursu[MAX_BILETOW];
 } bilet_t;
 
-void pokazElementyMiejsc(vecM &mM);
-void zapiszMiejsce(vecM &mM);
-void wczytajMiejsce(vecM &mM);
-void pokazMiejsca(vecM &mM);
+void pokazElementyMiejsc(VECM &mM);
+void zapiszMiejsca(VECM &mM);
+void wczytajMiejsca(VECM &mM);
+void pokazMiejsca(VECM &mM);
 void wybierzMiejsce(void);
-void dodajMiejsce(vecM &mM);
-void usunMiejsce(vecM &mM);
+void dodajMiejsce(VECM &mM);
+void usunMiejsce(VECM &mM);
 
-void pokazElementyPociagow(vecP &mP);
-void zapiszPociagi(vecP &mP);
-void wczytajPociagi(vecP &mP);
-void pokazPociagi(vecP &mP);
+void pokazElementyPociagow(VECP &mP);
+void zapiszPociagi(VECP &mP);
+void wczytajPociagi(VECP &mP);
+void pokazPociagi(VECP &mP);
 void wybierzPociag(void);
-void dodajPociag(vecP &mP);
-void usunPociag(vecP &mP);
+void dodajPociag(VECP &mP);
+void usunPociag(VECP &mP);
 
-void pokazElementyKursow(vecK &mK);
-void zapiszKursy(vecK &mK);
-void wczytajKursy(vecK &mK);
-void pokazKursy(vecK &mK);
+void pokazElementyKursow(VECK &mK);
+void zapiszKursy(VECK &mK);
+void wczytajKursy(VECK &mK);
+void pokazKursy(VECK &mK);
 void wybierzKurs(void);
-void dodajKurs(vecK &mK);
-void usunKurs(vecK &mK);
+void dodajKurs(VECK &mK);
+void usunKurs(VECK &mK);
 
 void pokazMenu(void);
 void obliczanieCzasu(void);

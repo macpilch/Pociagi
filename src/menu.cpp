@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: menu.cpp
     Data: 14.07.2022
-    Modyfikacja: 21.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #include <iostream>
@@ -11,9 +11,9 @@
 
 using namespace std;
 
-extern vecM myMiejsca;
-extern vecP myPociagi;
-extern vecK myKursy;
+extern VECM myMiejsca;
+extern VECP myPociagi;
+extern VECK myKursy;
 
 bilet_t b;
 bilet_t *bWsk = &b;
@@ -137,7 +137,7 @@ void wybierzBilet(void) {
 void wybierzMiejsce(void) {
     cout << "Dostepne miejsca: " << endl;
     
-    for(uInt i = 0; i < myMiejsca.size(); i++) {
+    for(UINT i = 0; i < myMiejsca.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << myMiejsca[i].getNazwa();
         cout << " Odleglosc: " << myMiejsca[i].getOdleglosc() << " km." << endl;
     }
@@ -145,7 +145,7 @@ void wybierzMiejsce(void) {
     cout << endl << "Podaj numer miejsca, ktory chcesz wybrac: ";
     cin >> bWsk->nrMiejsca[bWsk->nr - 1];
 
-    if((uInt)bWsk->nrMiejsca[bWsk->nr - 1] > myMiejsca.size() || (uInt)bWsk->nrMiejsca[bWsk->nr - 1] <= 0) {
+    if((UINT)bWsk->nrMiejsca[bWsk->nr - 1] > myMiejsca.size() || (UINT)bWsk->nrMiejsca[bWsk->nr - 1] <= 0) {
         system("cls");
         wybierzMiejsce();
     } else {
@@ -157,7 +157,7 @@ void wybierzMiejsce(void) {
 void wybierzPociag(void) {
     cout << "Dostepne pociagi: " << endl;
     
-    for(uInt i = 0; i < myPociagi.size(); i++) {
+    for(UINT i = 0; i < myPociagi.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << myPociagi[i].getNazwa();
         cout << " Predkosc: " << myPociagi[i].getPredkosc() << " km/h." << endl;
     }
@@ -165,7 +165,7 @@ void wybierzPociag(void) {
     cout << endl << "Podaj numer pociagu, ktory chcesz wybrac: ";
     cin >> bWsk->nrPociagu[bWsk->nr - 1];
 
-    if((uInt)bWsk->nrPociagu[bWsk->nr - 1] > myPociagi.size() || (uInt)bWsk->nrPociagu[bWsk->nr - 1] <= 0) {
+    if((UINT)bWsk->nrPociagu[bWsk->nr - 1] > myPociagi.size() || (UINT)bWsk->nrPociagu[bWsk->nr - 1] <= 0) {
         system("cls");
         wybierzPociag();
     } else if(!myPociagi[bWsk->nrPociagu[bWsk->nr - 1]].getDostepnosc()) {
@@ -183,7 +183,7 @@ void wybierzPociag(void) {
 void wybierzKurs(void) {
     cout << "Dostepne kursy: " << endl;
 
-    for(uInt i = 0; i < myKursy.size(); i++) {
+    for(UINT i = 0; i < myKursy.size(); i++) {
         cout << "Nr. " << i + 1;
 
         if(myKursy[i].czasWyjazdu.godz > 9 && myKursy[i].czasWyjazdu.godz < 24) {
@@ -202,7 +202,7 @@ void wybierzKurs(void) {
     cout << endl << "Podaj numer kursu, ktory chcesz wybrac: ";
     cin >> bWsk->nrKursu[bWsk->nr - 1];
 
-    if((uInt)bWsk->nrKursu[bWsk->nr - 1] > myKursy.size() || (uInt)bWsk->nrKursu[bWsk->nr - 1] <= 0) {
+    if((UINT)bWsk->nrKursu[bWsk->nr - 1] > myKursy.size() || (UINT)bWsk->nrKursu[bWsk->nr - 1] <= 0) {
         system("cls");
         wybierzKurs();
     } else if(!myKursy[bWsk->nrKursu[bWsk->nr - 1]].dostepnosc) {

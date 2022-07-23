@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: menu.h
     Data: 14.07.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #ifndef __MENU_H__

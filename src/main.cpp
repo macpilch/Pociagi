@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: main.cpp
     Data: 13.01.2022
-    Modyfikacja: 21.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #define LICENCJA
@@ -14,22 +14,18 @@
 
 using namespace std;
 
-vecM myMiejsca;
-vecP myPociagi;
-vecK myKursy;
+VECM myMiejsca;
+VECP myPociagi;
+VECK myKursy;
 
 int main(int argc, char **argv) {
     cout << "Argc: " << argc << endl;
     cout << "Argv: " << argv[0] << endl;
     
-    wczytajMiejsce(myMiejsca);
+    wczytajMiejsca(myMiejsca);
     wczytajPociagi(myPociagi);
     wczytajKursy(myKursy);
     pokazMenu();
-
-    /*while(getch()) {
-        cout << "Klawisz: " << getch() << endl;
-    }*/
     return 0;
 }
 

@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy.cpp
     Data: 20.01.2022
-    Modyfikacja: 20.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #include <iostream>
@@ -19,11 +19,11 @@ Kurs::Kurs() {
     czasPrzyjazdu.min = 0;
     dostepnosc = true;
 
-    cout << "Poprawnie stworzono konstruktor (Kursy)!" << endl;
+    cout << "Poprawnie stworzono konstruktor (Kurs)!" << endl;
 }
 
 Kurs::~Kurs() {
-    cout << "Poprawnie zniszczono konstruktor (Kursy)!" << endl;
+    cout << "Poprawnie zniszczono konstruktor (Kurs)!" << endl;
 }
 
 Kurs::Kurs(int godz, int min) : Kurs() {

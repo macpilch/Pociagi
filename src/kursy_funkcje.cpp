@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: kursy_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 21.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #include <iostream>
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void pokazElementyKursow(vecK &mK) {
+void pokazElementyKursow(VECK &mK) {
     cout << "MENU KURSOW (wybierz odpowiednia opcje): " << endl << endl << "1. Pokaz kursy do wybrania." << endl << "2. Dodaj nowy kurs." << endl << "3. Usun kurs." << endl << "4. Zapis kursow do pliku." << endl << "5. Powrot do menu." << endl;
 
     switch(getch()) {
@@ -43,7 +43,7 @@ void pokazElementyKursow(vecK &mK) {
     }
 }
 
-void zapiszKursy(vecK &mK) {
+void zapiszKursy(VECK &mK) {
     fstream plikBazaKursow;
     int wielkosc = mK.size();
 
@@ -66,7 +66,7 @@ void zapiszKursy(vecK &mK) {
     pokazElementyKursow(mK);
 }
 
-void wczytajKursy(vecK &mK) {
+void wczytajKursy(VECK &mK) {
     fstream plikBazaKursow;
     int tmpGodz = 0;
     int tmpMin = 0;
@@ -99,10 +99,10 @@ void wczytajKursy(vecK &mK) {
     plikBazaKursow.close();
 }
 
-void pokazKursy(vecK &mK) {
+void pokazKursy(VECK &mK) {
     cout << "Dostepne kursy: " << endl;
     
-    for(uInt i = 0; i < mK.size(); i++) {
+    for(UINT i = 0; i < mK.size(); i++) {
         cout << "Nr. " << i + 1;
 
         if(mK[i].czasWyjazdu.godz > 9 && mK[i].czasWyjazdu.godz < 24) {
@@ -129,7 +129,7 @@ void pokazKursy(vecK &mK) {
     }
 }
 
-void dodajKurs(vecK &mK) {
+void dodajKurs(VECK &mK) {
     int godzina = 0;
     int minuty = 0;
     int ilosc = 0;
@@ -146,7 +146,7 @@ void dodajKurs(vecK &mK) {
     cout << "Podaj liczbe minut o ktorej zacznie sie kurs (Wolnych miejsc: " << (MAX_KURSOW - mK.size()) << "): " << endl;
     cin >> minuty;
 
-    for(uInt i = 0; i < mK.size(); i++) {
+    for(UINT i = 0; i < mK.size(); i++) {
         if(godzina == mK[i].czasWyjazdu.godz && minuty == mK[i].czasWyjazdu.min) {
             system("cls");
             cout << "Taki kurs juz istnieje!" << endl << endl;
@@ -163,8 +163,8 @@ void dodajKurs(vecK &mK) {
     pokazElementyKursow(mK);
 }
 
-void usunKurs(vecK &mK) {
-    uInt id = 0;
+void usunKurs(VECK &mK) {
+    UINT id = 0;
 
     cout << "Podaj ID kursu, ktory chcesz usunac: " << endl;
     cin >> id;

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void pokazElementyPociagow(vecP &mP) {
+void pokazElementyPociagow(VECP &mP) {
     cout << "MENU POCIAGOW (wybierz odpowiednia opcje):" << endl << endl << "1. Pokaz pociagi do wybrania." << endl << "2. Dodaj nowy pociag." << endl << "3. Usun pociag." << endl << "4. Zapis pociagow do pliku." << endl << "5. Powrot do menu." << endl;
 
     switch(getch()) {
@@ -42,7 +42,7 @@ void pokazElementyPociagow(vecP &mP) {
     }
 }
 
-void zapiszPociagi(vecP &mP) {
+void zapiszPociagi(VECP &mP) {
     fstream plikBazaPociagi;
     int wielkosc = mP.size();
 
@@ -65,7 +65,7 @@ void zapiszPociagi(vecP &mP) {
     pokazElementyPociagow(mP);
 }
 
-void wczytajPociagi(vecP &mP) {
+void wczytajPociagi(VECP &mP) {
     fstream plikBazaPociagi;
     string tmpNazwa;
     double tmpPred = 0;
@@ -98,10 +98,10 @@ void wczytajPociagi(vecP &mP) {
     plikBazaPociagi.close();
 }
 
-void pokazPociagi(vecP &mP) {
+void pokazPociagi(VECP &mP) {
     cout << "Dostepne pociagi: " << endl;
     
-    for(uInt i = 0; i < mP.size(); i++) {
+    for(UINT i = 0; i < mP.size(); i++) {
         cout << "Nr. " << i + 1 << " Nazwa: " << mP[i].getNazwa();
         cout << " Predkosc: " << mP[i].getPredkosc() << " km/h." << endl;
     }
@@ -117,7 +117,7 @@ void pokazPociagi(vecP &mP) {
     }
 }
 
-void dodajPociag(vecP &mP) {
+void dodajPociag(VECP &mP) {
     string nazwa;
     double predkosc = 0;
     int ilosc = 0;
@@ -131,7 +131,7 @@ void dodajPociag(vecP &mP) {
     cout << "Podaj nazwe pociagu ktora chcesz dodac (Wolnych miejsc: " << (MAX_POCIAGOW - mP.size()) << "): " << endl;
     cin >> nazwa;
 
-    for(uInt i = 0; i < mP.size(); i++) {
+    for(UINT i = 0; i < mP.size(); i++) {
         if(nazwa == mP[i].getNazwa()) {
             system("cls");
             cout << "Taki pociag juz istnieje!" << endl << endl;
@@ -150,8 +150,8 @@ void dodajPociag(vecP &mP) {
     pokazElementyPociagow(mP);
 }
 
-void usunPociag(vecP &mP) {
-    uInt id = 0;
+void usunPociag(VECP &mP) {
+    UINT id = 0;
 
     cout << "Podaj ID pociagu, ktore chcesz usunac: " << endl;
     cin >> id;

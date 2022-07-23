@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: miejsca.cpp
     Data: 20.01.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #include <iostream>
@@ -12,11 +12,11 @@
 using namespace std;
 
 Miejsce::Miejsce() {
-    cout << "Poprawnie stworzono konstruktor (Miejsca)!" << endl;
+    cout << "Poprawnie stworzono konstruktor (Miejsce)!" << endl;
 }
 
 Miejsce::~Miejsce() {
-    cout << "Poprawnie zniszczono konstruktor (Miejsca)!" << endl;
+    cout << "Poprawnie zniszczono konstruktor (Miejsce)!" << endl;
 }
 
 void Miejsce::setMiejsce(string n, double odl) {

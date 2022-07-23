@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: miejsca_funkcje.cpp
     Data: 09.03.2022
-    Modyfikacja: 19.07.2022
+    Modyfikacja: 23.07.2022
 */
 
 #include <iostream>
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void pokazElementyMiejsc(vecM &mM) {
+void pokazElementyMiejsc(VECM &mM) {
     cout << "MENU MIEJSC (wybierz odpowiednia opcje):" << endl << endl << "1. Pokaz miejsca do wybrania." << endl << "2. Dodaj nowe miejsce." << endl << "3. Usun miejsce." << endl << "4. Zapis miejsc do pliku." << endl << "5. Powrot do menu." << endl;
 
     switch(getch()) {
@@ -29,7 +29,7 @@ void pokazElementyMiejsc(vecM &mM) {
         break;
     case K_KLAW_4:
         system("cls");
-        zapiszMiejsce(mM);
+        zapiszMiejsca(mM);
         break;
     case K_KLAW_5:
         system("cls");
@@ -42,7 +42,7 @@ void pokazElementyMiejsc(vecM &mM) {
     }
 }
 
-void zapiszMiejsce(vecM &mM) {
+void zapiszMiejsca(VECM &mM) {
     fstream plikBazaMiejsc;
     int wielkosc = mM.size();
 
@@ -65,7 +65,7 @@ void zapiszMiejsce(vecM &mM) {
     pokazElementyMiejsc(mM);
 }
 
-void wczytajMiejsce(vecM &mM) {
+void wczytajMiejsca(VECM &mM) {
     fstream plikBazaMiejsc;
     string tmpNazwa;
     double tmpOdlg = 0;
@@ -98,10 +98,10 @@ void wczytajMiejsce(vecM &mM) {
     plikBazaMiejsc.close();
 }
 
-void pokazMiejsca(vecM &mM) {
+void pokazMiejsca(VECM &mM) {
     cout << "Dostepne miejsca: " << endl;
     
-    for(uInt i = 0; i < mM.size(); i++) {
+    for(UINT i = 0; i < mM.size(); i++) {
         cout << "Nr. " << i + 1 << " Miejscowosc: " << mM[i].getNazwa();
         cout << " Odleglosc: " << mM[i].getOdleglosc() << " km." << endl;
     }
@@ -117,7 +117,7 @@ void pokazMiejsca(vecM &mM) {
     }
 }
 
-void dodajMiejsce(vecM &mM) {
+void dodajMiejsce(VECM &mM) {
     string nazwa;
     double odlg = 0;
     int ilosc = 0;
@@ -131,7 +131,7 @@ void dodajMiejsce(vecM &mM) {
     cout << "Podaj nazwe miejscowosci ktora chcesz dodac (Wolnych miejsc: " << (MAX_MIEJSC - mM.size()) << "): " << endl;
     cin >> nazwa;
 
-    for(uInt i = 0; i < mM.size(); i++) {
+    for(UINT i = 0; i < mM.size(); i++) {
         if(nazwa == mM[i].getNazwa()) {
             system("cls");
             cout << "Taka miejscowosc juz istnieje!" << endl << endl;
@@ -150,8 +150,8 @@ void dodajMiejsce(vecM &mM) {
     pokazElementyMiejsc(mM);
 }
 
-void usunMiejsce(vecM &mM) {
-    uInt id = 0;
+void usunMiejsce(VECM &mM) {
+    UINT id = 0;
 
     cout << "Podaj ID miejsca, ktore chcesz usunac: " << endl;
     cin >> id;
