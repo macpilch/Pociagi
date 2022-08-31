@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: funkcje.h
     Data: 09.03.2022
-    Modyfikacja: 29.08.2022
+    Modyfikacja: 31.08.2022
 */
 
 #ifndef __FUNKCJE_H__
@@ -28,37 +28,39 @@ typedef unsigned int UINT;
 struct Bilet {
     int ilosc;
     int nr;
+    int godz[MAX_BILETOW];
+    int min[MAX_BILETOW];
     int nrMiejsca[MAX_BILETOW];
     int nrPociagu[MAX_BILETOW];
     int nrKursu[MAX_BILETOW];
 };
 
-void pokazElementyMiejsc(VECM &mM);
-void zapiszMiejsca(VECM &mM);
-void wczytajMiejsca(VECM &mM);
-void pokazMiejsca(VECM &mM);
+void pokazElementyMiejsc(VECM &);
+void zapiszMiejsca(VECM &);
+void wczytajMiejsca(VECM &);
+void pokazMiejsca(VECM &);
 void wybierzMiejsce(void);
-void dodajMiejsce(VECM &mM);
-void usunMiejsce(VECM &mM);
+void dodajMiejsce(VECM &);
+void usunMiejsce(VECM &);
 
-void pokazElementyPociagow(VECP &mP);
-void zapiszPociagi(VECP &mP);
-void wczytajPociagi(VECP &mP);
-void pokazPociagi(VECP &mP);
+void pokazElementyPociagow(VECP &);
+void zapiszPociagi(VECP &);
+void wczytajPociagi(VECP &);
+void pokazPociagi(VECP &);
 void wybierzPociag(void);
-void dodajPociag(VECP &mP);
-void usunPociag(VECP &mP);
+void dodajPociag(VECP &);
+void usunPociag(VECP &);
 
-void pokazElementyKursow(VECK &mK);
-void zapiszKursy(VECK &mK);
-void wczytajKursy(VECK &mK);
-void pokazKursy(VECK &mK);
+void pokazElementyKursow(VECK &);
+void zapiszKursy(VECK &);
+void wczytajKursy(VECK &);
+void pokazKursy(VECK &);
 void wybierzKurs(void);
-void dodajKurs(VECK &mK);
-void usunKurs(VECK &mK);
+void dodajKurs(VECK &);
+void usunKurs(VECK &);
 
 void pokazMenu(void);
-void obliczanieCzasu(void);
+void obliczanieCzasu(int &, int &);
 void wybierzBilet(void);
 void pokazPodsumowanie(void);
 

@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: menu.cpp
     Data: 14.07.2022
-    Modyfikacja: 29.08.2022
+    Modyfikacja: 31.08.2022
 */
 
 #include <iostream>
@@ -15,10 +15,8 @@ extern VECM myMiejsca;
 extern VECP myPociagi;
 extern VECK myKursy;
 
-Bilet
-      b,
-      *bWsk = &b
-;
+Bilet b;
+Bilet *bWsk = &b;
 
 void pokazMenu(void) {
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl;
@@ -64,11 +62,9 @@ void pokazMenu(void) {
     }
 }
 
-void obliczanieCzasu(void) {
+void obliczanieCzasu(int &godz, int &min) {
     double predPociagu = 0;
     double odleglosc = 0;
-    int godz = 0;
-    int min = 0;
     int t = 0;
 
     predPociagu = myPociagi[bWsk->nrPociagu[bWsk->nr - 1] - 1].getPredkosc();
@@ -81,8 +77,6 @@ void obliczanieCzasu(void) {
     t %= GODZ_W_SEK;
     min = t / GODZ_W_MIN;
     t %= GODZ_W_MIN;
-
-    cout << "Kurs wyniesie: " << godz << " Godz. i " << min << " Min." << endl;
 
     if((min + myKursy[bWsk->nrKursu[bWsk->nr - 1] - 1].czasWyjazdu.min) > GODZ_W_MIN) {
         godz++;
@@ -228,6 +222,7 @@ void pokazPodsumowanie(void) {
         cout << "Pociag: Brak." << endl;
         cout << "Nr. biletu: Brak." << endl;
         cout << "Nr. kursu: Brak." << endl;
+        cout << "Kurs wyniesie: Brak." << endl;
         cout << "Czas wyjazdu pociagu: Brak." << endl;
         cout << "Czas przyjazdu pociagu: Brak." << endl;
         cout << endl << "Nacisnij ESC aby powrocic do glownego menu.";
@@ -245,7 +240,9 @@ void pokazPodsumowanie(void) {
         cout << "Pociag: " << myPociagi[bWsk->nrPociagu[bWsk->nr - nrStrony] - 1].getNazwa() << "." << endl;
         cout << "Nr. biletu: " << (bWsk->nr - nrStrony) + 1 << "." << endl;
         cout << "Nr. kursu: " << bWsk->nrKursu[bWsk->nr - nrStrony] << "." << endl;
-        obliczanieCzasu();
+        
+        obliczanieCzasu(bWsk->godz[bWsk->nr - 1], bWsk->min[bWsk->nr - 1]);
+        cout << "Kurs wyniesie: " << bWsk->godz[bWsk->nr - nrStrony] << " Godz. i " << bWsk->min[bWsk->nr - nrStrony] << " Min." << endl;
 
         if(myKursy[bWsk->nrKursu[bWsk->nr - nrStrony] - 1].czasWyjazdu.godz > 9 && myKursy[bWsk->nrKursu[bWsk->nr - nrStrony] - 1].czasWyjazdu.godz < 24) {
             cout << "Czas wyjazdu pociagu: " << myKursy[bWsk->nrKursu[bWsk->nr - nrStrony] - 1].czasWyjazdu.godz;
