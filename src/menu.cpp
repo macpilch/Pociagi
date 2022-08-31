@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: menu.cpp
     Data: 14.07.2022
-    Modyfikacja: 23.07.2022
+    Modyfikacja: 29.08.2022
 */
 
 #include <iostream>
@@ -15,8 +15,7 @@ extern VECM myMiejsca;
 extern VECP myPociagi;
 extern VECK myKursy;
 
-bilet_t b;
-bilet_t *bWsk = &b;
+Bilet *bWsk = &b;
 
 void pokazMenu(void) {
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl;
@@ -55,7 +54,7 @@ void pokazMenu(void) {
         break;
     }
 
-    for(int i = 0; MAX_BILETOW; i++) {
+    for(int i = 0; i < MAX_BILETOW; i++) {
         bWsk->nrMiejsca[i] = -1;
         bWsk->nrPociagu[i] = -1;
         bWsk->nrKursu[i] = -1;

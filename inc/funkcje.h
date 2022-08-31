@@ -3,7 +3,7 @@
     Autor: Maciej Pilch (z pomoca p. Krzysztofa Krupy)
     Plik: funkcje.h
     Data: 09.03.2022
-    Modyfikacja: 23.07.2022
+    Modyfikacja: 29.08.2022
 */
 
 #ifndef __FUNKCJE_H__
@@ -25,13 +25,13 @@ typedef vector<Pociag> VECP;
 typedef vector<Kurs> VECK;
 typedef unsigned int UINT;
 
-typedef struct bilet_s {
+struct Bilet {
     int ilosc;
     int nr;
     int nrMiejsca[MAX_BILETOW];
     int nrPociagu[MAX_BILETOW];
     int nrKursu[MAX_BILETOW];
-} bilet_t;
+} b;
 
 void pokazElementyMiejsc(VECM &mM);
 void zapiszMiejsca(VECM &mM);
