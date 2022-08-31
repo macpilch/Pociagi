@@ -31,7 +31,7 @@ struct Bilet {
     int nrMiejsca[MAX_BILETOW];
     int nrPociagu[MAX_BILETOW];
     int nrKursu[MAX_BILETOW];
-} b;
+};
 
 void pokazElementyMiejsc(VECM &mM);
 void zapiszMiejsca(VECM &mM);

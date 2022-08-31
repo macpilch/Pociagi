@@ -15,7 +15,10 @@ extern VECM myMiejsca;
 extern VECP myPociagi;
 extern VECK myKursy;
 
-Bilet *bWsk = &b;
+Bilet
+      b,
+      *bWsk = &b
+;
 
 void pokazMenu(void) {
     cout << "*** Witamy na Dworcu Centralnym w Rzeszowie! ***" << endl;
